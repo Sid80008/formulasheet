@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JEE Mains 2026 — Ultimate Cheat Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#070B14;--bg2:#0C1220;--bg3:#101829;--bg4:#141f30;
+--border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.12);--border3:rgba(255,255,255,0.2);
+--text:#E2E8F5;--muted:#8896B3;--dim:#4A5570;
+--phy:#38BDF8;--phy2:rgba(56,189,248,0.12);--phy3:rgba(56,189,248,0.06);
+--che:#4ADE80;--che2:rgba(74,222,128,0.12);--che3:rgba(74,222,128,0.06);
+--mat:#FB923C;--mat2:rgba(251,146,60,0.12);--mat3:rgba(251,146,60,0.06);
+--formula:#FDE68A;--unit:#86EFAC;--note:#CBD5E1;
+--red:#F87171;--red2:rgba(248,113,113,0.15);
+--amber:#FCD34D;--amber2:rgba(252,211,77,0.15);
+--r:8px;--r2:12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;font-size:13px;line-height:1.5;min-height:100vh;overflow-x:hidden;}
+
+/* grid bg */
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(56,189,248,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,0.025) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+
+/* ── TOPBAR ── */
+.topbar{position:sticky;top:0;z-index:200;background:rgba(7,11,20,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border2);padding:0 20px;}
+.topbar-inner{max-width:1800px;margin:0 auto;display:flex;align-items:center;gap:12px;height:54px;flex-wrap:wrap;}
+.logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;white-space:nowrap;flex-shrink:0;}
+.logo .yr{font-style:italic;color:var(--formula);font-size:14px;margin-left:4px;}
+.search-box{position:relative;flex:0 0 260px;}
+.search-box input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:7px 12px 7px 32px;color:var(--text);font-family:'Outfit',sans-serif;font-size:12px;outline:none;transition:border-color .2s;}
+.search-box input:focus{border-color:var(--phy);}
+.search-box input::placeholder{color:var(--dim);}
+.search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--dim);font-size:14px;pointer-events:none;}
+.subject-tabs{display:flex;gap:3px;flex:1;}
+.stab{padding:6px 16px;border-radius:20px;border:1px solid var(--border2);background:transparent;color:var(--muted);font-family:'Outfit',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.stab.phy.active,.stab.phy:hover{background:var(--phy2);color:var(--phy);border-color:var(--phy);}
+.stab.che.active,.stab.che:hover{background:var(--che2);color:var(--che);border-color:var(--che);}
+.stab.mat.active,.stab.mat:hover{background:var(--mat2);color:var(--mat);border-color:var(--mat);}
+.stab.all.active,.stab.all:hover{background:rgba(255,255,255,0.06);color:var(--text);border-color:var(--border3);}
+.counter{font-size:11px;color:var(--dim);white-space:nowrap;flex-shrink:0;}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1800px;margin:0 auto;padding:20px 16px 80px;position:relative;z-index:1;}
+
+/* ── SUBJECT PANEL ── */
+.subject-panel{display:none;}
+.subject-panel.active{display:block;}
+
+/* ── SUBJECT HERO ── */
+.subject-hero{display:flex;align-items:center;gap:14px;padding:14px 20px;border-radius:var(--r2);margin-bottom:20px;border:1px solid;}
+.subject-hero.phy{background:var(--phy3);border-color:rgba(56,189,248,0.2);}
+.subject-hero.che{background:var(--che3);border-color:rgba(74,222,128,0.2);}
+.subject-hero.mat{background:var(--mat3);border-color:rgba(251,146,60,0.2);}
+.hero-icon{font-size:28px;line-height:1;}
+.hero-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;}
+.hero-title.phy{color:var(--phy);}
+.hero-title.che{color:var(--che);}
+.hero-title.mat{color:var(--mat);}
+.hero-sub{font-size:12px;color:var(--muted);margin-top:2px;}
+.hero-stats{margin-left:auto;display:flex;gap:20px;}
+.hstat{text-align:center;}
+.hstat-num{font-size:20px;font-weight:700;font-family:'Fira Code',monospace;}
+.hstat-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
+
+/* ── CHAPTER ── */
+.chapter{margin-bottom:16px;border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;transition:border-color .2s;}
+.chapter:hover{border-color:var(--border2);}
+.chap-head{display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--bg2);cursor:pointer;user-select:none;border-bottom:1px solid var(--border);}
+.chap-num{font-family:'Fira Code',monospace;font-size:10px;color:var(--dim);min-width:20px;}
+.chap-name{font-size:13px;font-weight:600;flex:1;letter-spacing:.02em;}
+.chap-name.phy{color:var(--phy);}
+.chap-name.che{color:var(--che);}
+.chap-name.mat{color:var(--mat);}
+.tag{font-size:9px;padding:2px 7px;border-radius:10px;font-family:'Fira Code',monospace;font-weight:500;}
+.tag-h{background:var(--red2);color:#FDA4A4;border:1px solid rgba(248,113,113,0.3);}
+.tag-m{background:var(--amber2);color:#FDE68A;border:1px solid rgba(252,211,77,0.3);}
+.tag-l{background:var(--bg3);color:var(--dim);border:1px solid var(--border);}
+.chap-cnt{font-size:10px;color:var(--dim);font-family:'Fira Code',monospace;white-space:nowrap;}
+.chev{color:var(--dim);font-size:10px;transition:transform .2s;}
+.chapter.closed .chev{transform:rotate(-90deg);}
+.chapter.closed .chap-body{display:none;}
+
+/* ── CHAPTER BODY ── */
+.chap-body{padding:14px 16px 16px;background:var(--bg);}
+
+/* ── SECTION LABEL ── */
+.sec{font-size:9px;color:var(--muted);font-family:'Fira Code',monospace;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:8px 0 6px;border-bottom:1px solid var(--border);margin-bottom:8px;margin-top:4px;}
+.sec:first-child{margin-top:0;}
+
+/* ── FORMULA GRID ── */
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:7px;margin-bottom:4px;}
+.fgrid.dense{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));}
+.fgrid.wide{grid-template-columns:repeat(auto-fill,minmax(340px,1fr));}
+
+/* ── FORMULA CARD ── */
+.f{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:10px 12px;transition:border-color .15s,background .15s;position:relative;}
+.f:hover{border-color:var(--border2);background:var(--bg3);}
+.f.hidden{display:none;}
+.f-name{font-size:10px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
+.f-eq{font-family:'Fira Code',monospace;font-size:13px;color:var(--formula);font-weight:500;line-height:1.7;word-break:break-word;}
+.f-eq .v{color:var(--phy);}
+.f-eq .op{color:var(--muted);}
+.f-unit{font-family:'Fira Code',monospace;font-size:10px;color:var(--unit);margin-top:2px;}
+.f-note{font-size:11px;color:var(--dim);line-height:1.5;border-top:1px solid var(--border);padding-top:5px;margin-top:5px;}
+.f-note .hl{color:#FDA4A4;}
+.f-note .hlg{color:var(--unit);}
+.f-note .hla{color:var(--formula);}
+.f.span2{grid-column:span 2;}
+.f.span3{grid-column:span 3;}
+@media(max-width:700px){.f.span2,.f.span3{grid-column:span 1;}}
+
+/* ── REACTION CARD ── */
+.rxn{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:10px 12px;margin-bottom:7px;}
+.rxn-name{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;}
+.rxn-eq{font-family:'Fira Code',monospace;font-size:12px;color:var(--formula);line-height:1.8;word-break:break-word;}
+.rxn-eq .arrow{color:var(--che);}
+.rxn-eq .cond{font-size:10px;color:var(--muted);}
+.rxn-eq .prod{color:var(--unit);}
+.rxn-note{font-size:11px;color:var(--dim);margin-top:4px;line-height:1.5;}
+
+/* ── TABLE CARD ── */
+.tcard{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:8px;}
+.tcard table{width:100%;border-collapse:collapse;font-size:11.5px;}
+.tcard th{background:var(--bg4);color:var(--muted);font-weight:500;padding:6px 10px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border);}
+.tcard td{padding:5px 10px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:top;}
+.tcard tr:last-child td{border-bottom:none;}
+.tcard td:first-child{color:var(--formula);font-family:'Fira Code',monospace;font-size:11px;}
+.tcard td em{color:var(--unit);font-style:normal;}
+.tcard td .red{color:#FDA4A4;}
+
+/* ── MNEMONIC CARD ── */
+.mnem{background:var(--bg2);border:1px solid rgba(251,146,60,0.2);border-radius:var(--r);padding:10px 12px;margin-bottom:7px;}
+.mnem-title{font-size:10px;color:var(--mat);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
+.mnem-text{font-size:12px;color:var(--text);line-height:1.6;}
+.mnem-text strong{color:var(--formula);}
+
+/* ── TWO COLUMN ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+@media(max-width:600px){.two-col,.three-col{grid-template-columns:1fr;}}
+
+/* ── PRINT BUTTON ── */
+.print-btn{position:fixed;bottom:24px;right:24px;z-index:300;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:10px 18px;color:var(--text);font-family:'Outfit',sans-serif;font-size:12px;cursor:pointer;transition:all .2s;}
+.print-btn:hover{background:var(--bg4);border-color:var(--border3);}
+
+/* ── NO RESULTS ── */
+#no-res{display:none;text-align:center;padding:60px;color:var(--dim);}
+
+/* ── PRINT ── */
+@media print{
+body{background:#fff;color:#000;font-size:10px;}
+body::before{display:none;}
+.topbar{display:none;}
+.print-btn{display:none;}
+.chap-head{background:#f5f5f5;border-color:#ddd;}
+.chapter{border-color:#ddd;break-inside:avoid;}
+.f{background:#fafafa;border-color:#e0e0e0;break-inside:avoid;}
+.f-eq{color:#6b4c00;}
+.f-unit{color:#1a5c35;}
+.f-name{color:#555;}
+.chap-name.phy{color:#0077aa;}
+.chap-name.che{color:#007a40;}
+.chap-name.mat{color:#a64000;}
+.tcard td:first-child{color:#6b4c00;}
+.rxn-eq{color:#6b4c00;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+<div class="topbar-inner">
+  <div class="logo">JEE Mains <span class="yr">2026</span> — Ultimate Cheat Sheet</div>
+  <div class="search-box"><span class="search-icon">⌕</span><input id="q" type="text" placeholder="Search anything…" oninput="search(this.value)"></div>
+  <div class="subject-tabs">
+    <button class="stab all active" onclick="show('all',this)">All</button>
+    <button class="stab phy" onclick="show('phy',this)">⚛ Physics</button>
+    <button class="stab che" onclick="show('che',this)">⚗ Chemistry</button>
+    <button class="stab mat" onclick="show('mat',this)">∑ Maths</button>
+  </div>
+  <div class="counter" id="cnt">Loading…</div>
+</div>
+</div>
+
+<div class="wrap" id="wrap">
+
+
+<!-- ══════════════════════ PHYSICS PANEL ══════════════════════ -->
+<div class="subject-panel active" id="panel-phy" data-subject="phy">
+<div class="subject-hero phy">
+  <div class="hero-icon">⚛</div>
+  <div><div class="hero-title phy">Physics</div><div class="hero-sub">Mechanics · Thermodynamics · Electromagnetism · Optics · Modern Physics</div></div>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-num" style="color:var(--phy)">16</div><div class="hstat-lbl">Chapters</div></div>
+    <div class="hstat"><div class="hstat-num" style="color:var(--formula)">200+</div><div class="hstat-lbl">Formulas</div></div>
+    <div class="hstat"><div class="hstat-num" style="color:var(--unit)">25 Qs</div><div class="hstat-lbl">In Exam</div></div>
+  </div>
+</div>
+
+<!-- ── P01: KINEMATICS ── -->
+<div class="chapter" data-s="phy" id="p01">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">P01</span><span class="chap-name phy">Kinematics</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">18 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="sec">Equations of Motion (Uniform Acceleration)</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">1st equation</div><div class="f-eq"><span class="v">v</span> = <span class="v">u</span> + <span class="v">at</span></div></div>
+<div class="f"><div class="f-name">2nd equation</div><div class="f-eq"><span class="v">s</span> = <span class="v">ut</span> + ½<span class="v">at</span>²</div></div>
+<div class="f"><div class="f-name">3rd equation</div><div class="f-eq"><span class="v">v</span>² = <span class="v">u</span>² + 2<span class="v">as</span></div></div>
+<div class="f"><div class="f-name">nth second</div><div class="f-eq"><span class="v">s</span>ₙ = <span class="v">u</span> + <span class="v">a</span>(2<span class="v">n</span>−1)/2</div></div>
+<div class="f"><div class="f-name">Average velocity</div><div class="f-eq"><span class="v">v</span>avg = (<span class="v">u</span>+<span class="v">v</span>)/2 = <span class="v">s</span>/<span class="v">t</span></div><div class="f-note">Only valid for uniform acceleration</div></div>
+<div class="f"><div class="f-name">Relative velocity</div><div class="f-eq"><span class="v">v</span>AB = <span class="v">v</span>A − <span class="v">v</span>B</div><div class="f-note">River-boat: v_res = √(v²b − v²r) for min drift</div></div>
+</div>
+<div class="sec">Projectile Motion</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Time of flight</div><div class="f-eq"><span class="v">T</span> = 2<span class="v">u</span>sinθ / <span class="v">g</span></div></div>
+<div class="f"><div class="f-name">Maximum height</div><div class="f-eq"><span class="v">H</span> = <span class="v">u</span>²sin²θ / 2<span class="v">g</span></div></div>
+<div class="f"><div class="f-name">Range</div><div class="f-eq"><span class="v">R</span> = <span class="v">u</span>²sin2θ / <span class="v">g</span></div><div class="f-note"><span class="hl">Max range at θ=45°: R_max = u²/g</span></div></div>
+<div class="f"><div class="f-name">Trajectory</div><div class="f-eq"><span class="v">y</span> = <span class="v">x</span>tanθ − gx² / 2u²cos²θ</div></div>
+<div class="f"><div class="f-name">Horizontal: at height h</div><div class="f-eq"><span class="v">T</span> = √(2<span class="v">h</span>/<span class="v">g</span>), <span class="v">R</span> = <span class="v">u</span>√(2<span class="v">h</span>/<span class="v">g</span>)</div></div>
+<div class="f"><div class="f-name">Time to max height</div><div class="f-eq"><span class="v">t</span> = <span class="v">u</span>sinθ / <span class="v">g</span></div></div>
+</div>
+<div class="sec">Circular Motion</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Angular velocity</div><div class="f-eq">ω = 2π/<span class="v">T</span> = 2π<span class="v">f</span> = <span class="v">v</span>/<span class="v">r</span></div><div class="f-unit">rad/s</div></div>
+<div class="f"><div class="f-name">Centripetal acceleration</div><div class="f-eq"><span class="v">a</span>c = <span class="v">v</span>²/<span class="v">r</span> = ω²<span class="v">r</span></div></div>
+<div class="f"><div class="f-name">Centripetal force</div><div class="f-eq"><span class="v">F</span>c = <span class="v">mv</span>²/<span class="v">r</span> = <span class="v">m</span>ω²<span class="v">r</span></div></div>
+<div class="f"><div class="f-name">Vertical circle — min at top</div><div class="f-eq"><span class="v">v</span>top_min = √(<span class="v">gr</span>)</div><div class="f-note">T=0 at top (critical condition)</div></div>
+<div class="f"><div class="f-name">Vertical circle — min at bottom</div><div class="f-eq"><span class="v">v</span>bot_min = √(5<span class="v">gr</span>)</div></div>
+<div class="f"><div class="f-name">Banking: no friction</div><div class="f-eq">tanθ = <span class="v">v</span>²/<span class="v">rg</span></div></div>
+</div>
+</div></div>
+
+<!-- ── P02: LAWS OF MOTION ── -->
+<div class="chapter" data-s="phy" id="p02">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">P02</span><span class="chap-name phy">Laws of Motion & Friction</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">12 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Newton's 2nd Law</div><div class="f-eq"><span class="v">F</span> = <span class="v">ma</span> = d<span class="v">p</span>/d<span class="v">t</span></div><div class="f-unit">Newton (N = kg·m/s²)</div></div>
+<div class="f"><div class="f-name">Impulse</div><div class="f-eq"><span class="v">J</span> = <span class="v">F</span>·<span class="v">t</span> = Δ<span class="v">p</span> = <span class="v">m</span>(<span class="v">v</span>−<span class="v">u</span>)</div></div>
+<div class="f"><div class="f-name">Static friction</div><div class="f-eq"><span class="v">f</span>s ≤ μs<span class="v">N</span></div><div class="f-note"><span class="hl">μk &lt; μs</span> always</div></div>
+<div class="f"><div class="f-name">Kinetic friction</div><div class="f-eq"><span class="v">f</span>k = μk<span class="v">N</span></div></div>
+<div class="f"><div class="f-name">Angle of friction</div><div class="f-eq">tanλ = μ</div></div>
+<div class="f"><div class="f-name">Incline — no friction</div><div class="f-eq"><span class="v">a</span> = <span class="v">g</span>sinθ; N = <span class="v">mg</span>cosθ</div></div>
+<div class="f"><div class="f-name">Incline — with friction</div><div class="f-eq"><span class="v">a</span> = <span class="v">g</span>(sinθ − μcosθ)</div></div>
+<div class="f"><div class="f-name">Atwood machine — acceleration</div><div class="f-eq"><span class="v">a</span> = (m₁−m₂)<span class="v">g</span>/(m₁+m₂)</div></div>
+<div class="f"><div class="f-name">Atwood machine — tension</div><div class="f-eq"><span class="v">T</span> = 2m₁m₂<span class="v">g</span>/(m₁+m₂)</div></div>
+<div class="f"><div class="f-name">Banking with friction — vmax</div><div class="f-eq"><span class="v">v</span>max = √[rg(μ+tanθ)/(1−μtanθ)]</div></div>
+<div class="f"><div class="f-name">Pseudo force</div><div class="f-eq"><span class="v">F</span>pseudo = −<span class="v">ma</span>frame</div><div class="f-note">In non-inertial (accelerating) frame</div></div>
+<div class="f"><div class="f-name">Spring force</div><div class="f-eq"><span class="v">F</span> = −<span class="v">kx</span></div><div class="f-note">Always restoring in nature</div></div>
+</div>
+</div></div>
+
+<!-- ── P03: WORK ENERGY POWER ── -->
+<div class="chapter" data-s="phy" id="p03">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">P03</span><span class="chap-name phy">Work, Energy & Power</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">14 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Work done</div><div class="f-eq"><span class="v">W</span> = <span class="v">F·s</span>cosθ = <span class="v">F⃗·s⃗</span></div><div class="f-unit">Joule (J)</div></div>
+<div class="f"><div class="f-name">Kinetic energy</div><div class="f-eq"><span class="v">KE</span> = ½<span class="v">mv</span>² = <span class="v">p</span>²/2<span class="v">m</span></div></div>
+<div class="f"><div class="f-name">Work-energy theorem</div><div class="f-eq"><span class="v">W</span>net = ΔKE</div><div class="f-note">Net work = change in KE always</div></div>
+<div class="f"><div class="f-name">Gravitational PE</div><div class="f-eq"><span class="v">U</span> = <span class="v">mgh</span></div></div>
+<div class="f"><div class="f-name">Spring PE</div><div class="f-eq"><span class="v">U</span> = ½<span class="v">kx</span>²</div></div>
+<div class="f"><div class="f-name">Power</div><div class="f-eq"><span class="v">P</span> = <span class="v">W</span>/<span class="v">t</span> = <span class="v">Fv</span>cosθ</div><div class="f-unit">Watt (W = J/s)</div></div>
+<div class="f"><div class="f-name">Elastic collision — final velocities</div><div class="f-eq"><span class="v">v</span>₁ = (m₁−m₂)u₁/(m₁+m₂) + 2m₂u₂/(m₁+m₂)</div></div>
+<div class="f"><div class="f-name">Elastic: equal masses</div><div class="f-eq">v₁=u₂, v₂=u₁ (velocities exchange)</div></div>
+<div class="f"><div class="f-name">Perfectly inelastic</div><div class="f-eq">v = (m₁u₁+m₂u₂)/(m₁+m₂)</div></div>
+<div class="f"><div class="f-name">Coefficient of restitution</div><div class="f-eq">e = (v₂−v₁)/(u₁−u₂)</div><div class="f-note">e=1 elastic; e=0 perfectly inelastic</div></div>
+<div class="f"><div class="f-name">Springs in series</div><div class="f-eq">1/k_eff = 1/k₁ + 1/k₂</div></div>
+<div class="f"><div class="f-name">Springs in parallel</div><div class="f-eq">k_eff = k₁ + k₂</div></div>
+<div class="f"><div class="f-name">Energy loss in inelastic</div><div class="f-eq">ΔKE = ½·m₁m₂(u₁−u₂)²/(m₁+m₂)</div></div>
+<div class="f"><div class="f-name">Efficiency</div><div class="f-eq">η = (Useful output/Input) × 100%</div></div>
+</div>
+</div></div>
+
+<!-- ── P04: ROTATION ── -->
+<div class="chapter" data-s="phy" id="p04">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">P04</span><span class="chap-name phy">Rotational Motion</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">16 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="sec">Core Relations</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Torque</div><div class="f-eq">τ = r × F = Iα</div><div class="f-unit">N·m</div></div>
+<div class="f"><div class="f-name">Angular momentum</div><div class="f-eq">L = Iω = mvr</div><div class="f-unit">kg·m²/s</div></div>
+<div class="f"><div class="f-name">Rotational KE</div><div class="f-eq">KE_rot = ½Iω²</div></div>
+<div class="f"><div class="f-name">Rolling body total KE</div><div class="f-eq">KE = ½mv²(1 + k²/r²)</div><div class="f-note">k = radius of gyration</div></div>
+<div class="f"><div class="f-name">Parallel axis theorem</div><div class="f-eq">I = I_cm + md²</div></div>
+<div class="f"><div class="f-name">Perpendicular axis (lamina)</div><div class="f-eq">Iz = Ix + Iy</div></div>
+<div class="f"><div class="f-name">Rolling on incline — a</div><div class="f-eq">a = gsinθ / (1 + I/mr²)</div></div>
+<div class="f"><div class="f-name">Conservation of L</div><div class="f-eq">I₁ω₁ = I₂ω₂</div><div class="f-note">When net external torque = 0</div></div>
+</div>
+<div class="sec">Moments of Inertia (memorise these!)</div>
+<div class="tcard"><table><thead><tr><th>Shape</th><th>Axis</th><th>Formula</th></tr></thead><tbody>
+<tr><td>Solid sphere</td><td>Diameter</td><td><em>2mr²/5</em></td></tr>
+<tr><td>Hollow sphere</td><td>Diameter</td><td><em>2mr²/3</em></td></tr>
+<tr><td>Solid cylinder/disc</td><td>Own axis</td><td><em>mr²/2</em></td></tr>
+<tr><td>Hollow cylinder/ring</td><td>Own axis</td><td><em>mr²</em></td></tr>
+<tr><td>Thin rod</td><td>Centre ⊥</td><td><em>ml²/12</em></td></tr>
+<tr><td>Thin rod</td><td>End ⊥</td><td><em>ml²/3</em></td></tr>
+<tr><td>Rectangular plate</td><td>Centre ⊥ to l</td><td><em>ml²/12</em></td></tr>
+<tr><td>Square plate</td><td>Centre ⊥ to plane</td><td><em>ma²/6</em></td></tr>
+</tbody></table></div>
+</div></div>
+
+<!-- ── P05: GRAVITATION ── -->
+<div class="chapter" data-s="phy" id="p05">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">P05</span><span class="chap-name phy">Gravitation</span><span class="tag tag-m">MED</span><span class="chap-cnt">10 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Newton's law</div><div class="f-eq">F = Gm₁m₂/r²</div><div class="f-note">G = 6.67×10⁻¹¹ N·m²/kg²</div></div>
+<div class="f"><div class="f-name">g at surface</div><div class="f-eq">g = GM/R²</div><div class="f-note">g = 9.8 m/s² ≈ 10 m/s²</div></div>
+<div class="f"><div class="f-name">g at height h (h&lt;&lt;R)</div><div class="f-eq">g_h = g(1 − 2h/R)</div></div>
+<div class="f"><div class="f-name">g at depth d</div><div class="f-eq">g_d = g(1 − d/R)</div><div class="f-note">g=0 at Earth's centre</div></div>
+<div class="f"><div class="f-name">Orbital velocity</div><div class="f-eq">v₀ = √(GM/r) = R√(g/r)</div></div>
+<div class="f"><div class="f-name">Escape velocity</div><div class="f-eq">v_e = √(2gR) = 11.2 km/s</div><div class="f-note">v_e = √2 × v₀ (at surface)</div></div>
+<div class="f"><div class="f-name">Gravitational PE</div><div class="f-eq">U = −GMm/r</div></div>
+<div class="f"><div class="f-name">Binding energy</div><div class="f-eq">BE = GMm/2r</div></div>
+<div class="f"><div class="f-name">Kepler's 3rd Law</div><div class="f-eq">T² ∝ r³ → T²/r³ = const</div></div>
+<div class="f"><div class="f-name">Geostationary orbit</div><div class="f-eq">h ≈ 36000 km, T = 24 hrs</div></div>
+</div>
+</div></div>
+
+<!-- ── P06: SHM ── -->
+<div class="chapter" data-s="phy" id="p06">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">P06</span><span class="chap-name phy">Simple Harmonic Motion</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">13 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Defining equation</div><div class="f-eq">a = −ω²x</div><div class="f-note">Restoring force always towards mean</div></div>
+<div class="f"><div class="f-name">Displacement</div><div class="f-eq">x = Asin(ωt + φ)</div></div>
+<div class="f"><div class="f-name">Velocity</div><div class="f-eq">v = ω√(A²−x²)</div><div class="f-note">v_max = Aω at x=0</div></div>
+<div class="f"><div class="f-name">Acceleration</div><div class="f-eq">a_max = Aω² at x=±A</div></div>
+<div class="f"><div class="f-name">Time period — spring</div><div class="f-eq">T = 2π√(m/k)</div><div class="f-note">Independent of amplitude</div></div>
+<div class="f"><div class="f-name">Time period — pendulum</div><div class="f-eq">T = 2π√(L/g)</div><div class="f-note"><span class="hl">Independent of mass and amplitude</span></div></div>
+<div class="f"><div class="f-name">Total energy</div><div class="f-eq">E = ½mω²A² = ½kA²</div><div class="f-note">Constant throughout motion</div></div>
+<div class="f"><div class="f-name">KE in SHM</div><div class="f-eq">KE = ½mω²(A²−x²)</div></div>
+<div class="f"><div class="f-name">PE in SHM</div><div class="f-eq">PE = ½mω²x²</div></div>
+<div class="f"><div class="f-name">Springs in series — T</div><div class="f-eq">T = 2π√[m(1/k₁+1/k₂)]</div></div>
+<div class="f"><div class="f-name">Springs in parallel — T</div><div class="f-eq">T = 2π√[m/(k₁+k₂)]</div></div>
+<div class="f"><div class="f-name">Liquid in U-tube</div><div class="f-eq">T = 2π√(L/2g)</div></div>
+<div class="f"><div class="f-name">Torsional pendulum</div><div class="f-eq">T = 2π√(I/C)</div><div class="f-note">C = torsional constant</div></div>
+</div>
+</div></div>
+
+<!-- ── P07: THERMODYNAMICS ── -->
+<div class="chapter" data-s="phy" id="p07">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">P07</span><span class="chap-name phy">Thermodynamics & KTG</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">20 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="sec">Laws & Processes</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">1st law</div><div class="f-eq">ΔU = Q − W</div><div class="f-note">Q=heat added; W=work done BY system</div></div>
+<div class="f"><div class="f-name">Work by gas</div><div class="f-eq">W = ∫PdV = Area under PV graph</div></div>
+<div class="f"><div class="f-name">Mayer's relation</div><div class="f-eq">Cp − Cv = R</div><div class="f-note">γ=Cp/Cv: Mono=5/3; Di=7/5; Tri=4/3</div></div>
+<div class="f"><div class="f-name">Internal energy</div><div class="f-eq">ΔU = nCvΔT</div><div class="f-note">Always true regardless of process</div></div>
+</div>
+<div class="tcard"><table><thead><tr><th>Process</th><th>Condition</th><th>Work W</th><th>Heat Q</th><th>ΔU</th></tr></thead><tbody>
+<tr><td>Isothermal</td><td>T = const</td><td><em>nRTln(Vf/Vi)</em></td><td><em>= W</em></td><td><em>0</em></td></tr>
+<tr><td>Adiabatic</td><td>Q = 0</td><td><em>nCv(Ti−Tf)</em></td><td><em>0</em></td><td><em>−W</em></td></tr>
+<tr><td>Isochoric</td><td>V = const</td><td><em>0</em></td><td><em>nCvΔT</em></td><td><em>= Q</em></td></tr>
+<tr><td>Isobaric</td><td>P = const</td><td><em>nRΔT</em></td><td><em>nCpΔT</em></td><td><em>nCvΔT</em></td></tr>
+</tbody></table></div>
+<div class="sec">Adiabatic & Carnot</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Adiabatic relation</div><div class="f-eq">PVγ = const; TVγ⁻¹ = const</div></div>
+<div class="f"><div class="f-name">Carnot efficiency</div><div class="f-eq">η = 1 − TL/TH</div><div class="f-note"><span class="hl">Maximum possible efficiency between TH and TL</span></div></div>
+<div class="f"><div class="f-name">COP — refrigerator</div><div class="f-eq">β = TL/(TH−TL) = QL/W</div></div>
+<div class="f"><div class="f-name">Entropy</div><div class="f-eq">ΔS = ΔQ/T ≥ 0</div><div class="f-note">Universe entropy always increases</div></div>
+</div>
+<div class="sec">Kinetic Theory of Gases</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Ideal gas law</div><div class="f-eq">PV = nRT = NkT</div><div class="f-note">R=8.314 J/mol·K; k=1.38×10⁻²³ J/K</div></div>
+<div class="f"><div class="f-name">RMS speed</div><div class="f-eq">v_rms = √(3RT/M) = √(3kT/m)</div></div>
+<div class="f"><div class="f-name">Mean speed</div><div class="f-eq">v_mean = √(8RT/πM)</div></div>
+<div class="f"><div class="f-name">Most probable speed</div><div class="f-eq">v_mp = √(2RT/M)</div><div class="f-note"><span class="hla">v_mp : v_mean : v_rms = 1 : 1.128 : 1.225</span></div></div>
+<div class="f"><div class="f-name">KE per molecule</div><div class="f-eq">KE = (f/2)kT</div><div class="f-note">f=degrees of freedom; Mono:3; Di:5; Tri:6</div></div>
+<div class="f"><div class="f-name">Mean free path</div><div class="f-eq">λ = kT/(√2·πd²P)</div></div>
+</div>
+</div></div>
+
+<!-- ── P08: ELECTROSTATICS ── -->
+<div class="chapter" data-s="phy" id="p08">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">P08</span><span class="chap-name phy">Electrostatics</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">18 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="sec">Electric Force & Field</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Coulomb's law</div><div class="f-eq">F = kq₁q₂/r²</div><div class="f-note">k = 9×10⁹ N·m²/C² = 1/4πε₀; ε₀ = 8.85×10⁻¹²</div></div>
+<div class="f"><div class="f-name">Electric field</div><div class="f-eq">E = kq/r²</div><div class="f-unit">N/C = V/m</div></div>
+<div class="f"><div class="f-name">Gauss's law</div><div class="f-eq">∮E·dA = q_enc/ε₀</div></div>
+<div class="f"><div class="f-name">E — infinite sheet</div><div class="f-eq">E = σ/2ε₀</div></div>
+<div class="f"><div class="f-name">E — between capacitor plates</div><div class="f-eq">E = σ/ε₀</div></div>
+<div class="f"><div class="f-name">E — inside conductor</div><div class="f-eq">E = 0</div><div class="f-note">All charge on outer surface</div></div>
+<div class="f"><div class="f-name">E — infinite line charge</div><div class="f-eq">E = λ/2πε₀r</div></div>
+<div class="f"><div class="f-name">E — ring at axis</div><div class="f-eq">E = kQx/(R²+x²)^(3/2)</div></div>
+</div>
+<div class="sec">Potential & Energy</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Electric potential</div><div class="f-eq">V = kq/r</div><div class="f-unit">Volt (V = J/C)</div></div>
+<div class="f"><div class="f-name">E from V</div><div class="f-eq">E = −dV/dr</div></div>
+<div class="f"><div class="f-name">PE of two charges</div><div class="f-eq">U = kq₁q₂/r</div></div>
+<div class="f"><div class="f-name">Capacitance</div><div class="f-eq">C = Q/V = ε₀A/d</div><div class="f-unit">Farad (F)</div></div>
+<div class="f"><div class="f-name">With dielectric</div><div class="f-eq">C = κε₀A/d</div><div class="f-note">κ = dielectric constant</div></div>
+<div class="f"><div class="f-name">Energy stored</div><div class="f-eq">U = ½CV² = Q²/2C = ½QV</div></div>
+<div class="f"><div class="f-name">Capacitors — series</div><div class="f-eq">1/C_eq = 1/C₁ + 1/C₂ + …</div><div class="f-note">Same Q; different V</div></div>
+<div class="f"><div class="f-name">Capacitors — parallel</div><div class="f-eq">C_eq = C₁ + C₂ + …</div><div class="f-note">Same V; different Q</div></div>
+<div class="f"><div class="f-name">Energy density</div><div class="f-eq">u = ½ε₀E²</div><div class="f-unit">J/m³</div></div>
+<div class="f"><div class="f-name">Spherical capacitor</div><div class="f-eq">C = 4πε₀·ab/(b−a)</div></div>
+</div>
+</div></div>
+
+<!-- ── P09: CURRENT ELECTRICITY ── -->
+<div class="chapter" data-s="phy" id="p09">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">P09</span><span class="chap-name phy">Current Electricity</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">16 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Current</div><div class="f-eq">I = nAev_d = Q/t</div><div class="f-unit">Ampere (A = C/s)</div></div>
+<div class="f"><div class="f-name">Drift velocity</div><div class="f-eq">v_d = eEτ/m = I/nAe</div></div>
+<div class="f"><div class="f-name">Ohm's law</div><div class="f-eq">V = IR</div></div>
+<div class="f"><div class="f-name">Resistance</div><div class="f-eq">R = ρL/A</div><div class="f-note">ρ = resistivity (Ω·m)</div></div>
+<div class="f"><div class="f-name">Temp effect on R</div><div class="f-eq">R_T = R₀(1 + αΔT)</div><div class="f-note">α = temp coefficient of resistance</div></div>
+<div class="f"><div class="f-name">Resistors — series</div><div class="f-eq">R_eq = R₁ + R₂ + …</div></div>
+<div class="f"><div class="f-name">Resistors — parallel</div><div class="f-eq">1/R_eq = 1/R₁ + 1/R₂ + …</div></div>
+<div class="f"><div class="f-name">EMF & terminal voltage</div><div class="f-eq">V = ε − Ir</div><div class="f-note">r = internal resistance</div></div>
+<div class="f"><div class="f-name">Power</div><div class="f-eq">P = VI = I²R = V²/R</div><div class="f-unit">Watt</div></div>
+<div class="f"><div class="f-name">KCL (junction rule)</div><div class="f-eq">ΣI_in = ΣI_out</div></div>
+<div class="f"><div class="f-name">KVL (loop rule)</div><div class="f-eq">ΣV = 0 (closed loop)</div></div>
+<div class="f"><div class="f-name">Wheatstone bridge</div><div class="f-eq">P/Q = R/S (balanced)</div><div class="f-note">No current through galvanometer</div></div>
+<div class="f"><div class="f-name">Meter bridge</div><div class="f-eq">R/S = l/(100−l)</div></div>
+<div class="f"><div class="f-name">Potentiometer (EMF)</div><div class="f-eq">ε₁/ε₂ = l₁/l₂</div></div>
+<div class="f"><div class="f-name">Joule heating</div><div class="f-eq">H = I²Rt = VIt</div><div class="f-unit">Joule</div></div>
+<div class="f"><div class="f-name">Cells in series</div><div class="f-eq">E_net=nε; r_net=nr</div></div>
+</div>
+</div></div>
+
+<!-- ── P10: MAGNETISM ── -->
+<div class="chapter" data-s="phy" id="p10">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">P10</span><span class="chap-name phy">Magnetism, EMI & AC</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">18 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="sec">Magnetic Force & Field</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Force on moving charge</div><div class="f-eq">F = qv×B = qvBsinθ</div><div class="f-unit">Newton</div></div>
+<div class="f"><div class="f-name">Force on wire</div><div class="f-eq">F = BILsinθ</div></div>
+<div class="f"><div class="f-name">Circular motion in B</div><div class="f-eq">r = mv/qB; T = 2πm/qB</div><div class="f-note">T independent of velocity (cyclotron!)</div></div>
+<div class="f"><div class="f-name">Biot-Savart</div><div class="f-eq">dB = (μ₀/4π)·Idlsinθ/r²</div><div class="f-note">μ₀ = 4π×10⁻⁷ T·m/A</div></div>
+<div class="f"><div class="f-name">B — straight wire</div><div class="f-eq">B = μ₀I/2πr</div></div>
+<div class="f"><div class="f-name">B — circular loop centre</div><div class="f-eq">B = μ₀I/2r</div></div>
+<div class="f"><div class="f-name">B — solenoid</div><div class="f-eq">B = μ₀nI</div><div class="f-note">n = turns per unit length</div></div>
+<div class="f"><div class="f-name">B — toroid</div><div class="f-eq">B = μ₀NI/2πr</div></div>
+<div class="f"><div class="f-name">Torque on dipole</div><div class="f-eq">τ = MBsinθ = M×B</div></div>
+</div>
+<div class="sec">Electromagnetic Induction</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Magnetic flux</div><div class="f-eq">Φ = BA·cosθ = B·A</div><div class="f-unit">Weber (Wb = V·s)</div></div>
+<div class="f"><div class="f-name">Faraday's law</div><div class="f-eq">ε = −NdΦ/dt</div><div class="f-note">Lenz's law: opposes change in flux</div></div>
+<div class="f"><div class="f-name">Motional EMF</div><div class="f-eq">ε = Blv</div></div>
+<div class="f"><div class="f-name">Self inductance</div><div class="f-eq">ε = −L·dI/dt; L (solenoid) = μ₀n²Al</div><div class="f-unit">Henry (H)</div></div>
+<div class="f"><div class="f-name">Energy in inductor</div><div class="f-eq">U = ½LI²</div></div>
+</div>
+<div class="sec">AC Circuits</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Reactances</div><div class="f-eq">X_L = ωL; X_C = 1/ωC</div></div>
+<div class="f"><div class="f-name">Impedance (series RLC)</div><div class="f-eq">Z = √[R² + (X_L−X_C)²]</div></div>
+<div class="f"><div class="f-name">Resonance</div><div class="f-eq">ω₀ = 1/√(LC); Z=R (minimum)</div></div>
+<div class="f"><div class="f-name">Power factor</div><div class="f-eq">cosφ = R/Z; P_avg = V_rms·I_rms·cosφ</div></div>
+</div>
+</div></div>
+
+<!-- ── P11: OPTICS ── -->
+<div class="chapter" data-s="phy" id="p11">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">P11</span><span class="chap-name phy">Ray & Wave Optics</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">20 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="sec">Ray Optics</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Mirror formula</div><div class="f-eq">1/f = 1/v + 1/u; f = R/2</div><div class="f-note">Sign convention: distances from pole; −ve for real</div></div>
+<div class="f"><div class="f-name">Mirror magnification</div><div class="f-eq">m = h_i/h_o = −v/u</div><div class="f-note">|m|&gt;1: magnified; m&lt;0: inverted</div></div>
+<div class="f"><div class="f-name">Snell's law</div><div class="f-eq">n₁sinθ₁ = n₂sinθ₂</div></div>
+<div class="f"><div class="f-name">Refractive index</div><div class="f-eq">n = c/v = sinθ_i/sinθ_r</div></div>
+<div class="f"><div class="f-name">TIR critical angle</div><div class="f-eq">sinθ_c = n₂/n₁</div><div class="f-note">TIR when θ &gt; θc; n₁ &gt; n₂</div></div>
+<div class="f"><div class="f-name">Refraction at sphere surface</div><div class="f-eq">n₂/v − n₁/u = (n₂−n₁)/R</div></div>
+<div class="f"><div class="f-name">Lens formula</div><div class="f-eq">1/f = 1/v − 1/u</div></div>
+<div class="f"><div class="f-name">Lens-maker's equation</div><div class="f-eq">1/f = (n−1)(1/R₁ − 1/R₂)</div></div>
+<div class="f"><div class="f-name">Power of lens</div><div class="f-eq">P = 1/f(m)</div><div class="f-unit">Dioptre (D = m⁻¹)</div></div>
+<div class="f"><div class="f-name">Lens magnification</div><div class="f-eq">m = v/u = f/(f+u) = (v−f)/f</div></div>
+<div class="f"><div class="f-name">Lenses in contact</div><div class="f-eq">P_net = P₁ + P₂</div></div>
+<div class="f"><div class="f-name">Prism — thin prism</div><div class="f-eq">δ = (n−1)A</div></div>
+<div class="f"><div class="f-name">Prism — min deviation</div><div class="f-eq">n = sin[(A+δm)/2] / sin(A/2)</div></div>
+<div class="f"><div class="f-name">Microscope magnification</div><div class="f-eq">m = (L/f_o)·(D/f_e)</div><div class="f-note">D = 25 cm (least distance of distinct vision)</div></div>
+<div class="f"><div class="f-name">Telescope magnification</div><div class="f-eq">m = f_o/f_e (normal adjustment)</div></div>
+</div>
+<div class="sec">Wave Optics</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">YDSE fringe width</div><div class="f-eq">β = λD/d</div><div class="f-note">D=screen dist; d=slit separation</div></div>
+<div class="f"><div class="f-name">Bright fringe</div><div class="f-eq">Δx = nλ; y_n = nλD/d</div></div>
+<div class="f"><div class="f-name">Dark fringe</div><div class="f-eq">Δx = (2n−1)λ/2</div></div>
+<div class="f"><div class="f-name">Single slit minima</div><div class="f-eq">asinθ = nλ</div></div>
+<div class="f"><div class="f-name">Brewster's angle</div><div class="f-eq">tanθ_B = n</div></div>
+</div>
+</div></div>
+
+<!-- ── P12: MODERN PHYSICS ── -->
+<div class="chapter" data-s="phy" id="p12">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">P12</span><span class="chap-name phy">Modern Physics</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">18 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="sec">Dual Nature</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Photon energy</div><div class="f-eq">E = hf = hc/λ</div><div class="f-note">h = 6.626×10⁻³⁴ J·s; hc = 1240 eV·nm</div></div>
+<div class="f"><div class="f-name">Photoelectric equation</div><div class="f-eq">KE_max = hf − φ = eV₀</div></div>
+<div class="f"><div class="f-name">Threshold frequency</div><div class="f-eq">f₀ = φ/h; λ₀ = hc/φ</div></div>
+<div class="f"><div class="f-name">de Broglie wavelength</div><div class="f-eq">λ = h/p = h/mv</div></div>
+<div class="f"><div class="f-name">de Broglie — accelerated</div><div class="f-eq">λ = h/√(2mqV)</div></div>
+<div class="f"><div class="f-name">Photon momentum</div><div class="f-eq">p = h/λ = E/c</div></div>
+</div>
+<div class="sec">Bohr Model</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Radius of nth orbit</div><div class="f-eq">r_n = 0.529n²/Z Å</div></div>
+<div class="f"><div class="f-name">Speed in nth orbit</div><div class="f-eq">v_n = 2.18×10⁶ Z/n m/s</div></div>
+<div class="f"><div class="f-name">Energy of nth orbit</div><div class="f-eq">E_n = −13.6Z²/n² eV</div><div class="f-note">E₁(H) = −13.6 eV</div></div>
+<div class="f"><div class="f-name">Spectral lines</div><div class="f-eq">1/λ = RZ²(1/n₁² − 1/n₂²)</div><div class="f-note">R = 1.097×10⁷ m⁻¹ (Rydberg const)</div></div>
+<div class="f"><div class="f-name">Number of spectral lines</div><div class="f-eq">N = n(n−1)/2</div><div class="f-note">From nth excited state</div></div>
+</div>
+<div class="sec">Radioactivity & Nuclear</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Decay law</div><div class="f-eq">N = N₀e^(−λt); A = A₀e^(−λt)</div></div>
+<div class="f"><div class="f-name">Half-life</div><div class="f-eq">T½ = ln2/λ = 0.693/λ</div></div>
+<div class="f"><div class="f-name">After n half-lives</div><div class="f-eq">N = N₀/2ⁿ; A = A₀/2ⁿ</div></div>
+<div class="f"><div class="f-name">Mass-energy</div><div class="f-eq">E = mc²; 1 amu = 931.5 MeV</div></div>
+<div class="f"><div class="f-name">Binding energy</div><div class="f-eq">BE/A = Δmc²/A</div><div class="f-note">Peak at Fe-56 (~8.8 MeV/nucleon)</div></div>
+<div class="f"><div class="f-name">Nuclear reactions</div><div class="f-eq">₂He⁴: α; e⁻: β⁻; e⁺: β⁺; γ: no charge/mass change</div></div>
+</div>
+</div></div>
+
+<!-- ── P13: WAVES & SOUND ── -->
+<div class="chapter" data-s="phy" id="p13">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">P13</span><span class="chap-name phy">Waves & Sound</span><span class="tag tag-m">MED</span><span class="chap-cnt">12 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Wave equation</div><div class="f-eq">v = fλ; y = Asin(kx − ωt)</div></div>
+<div class="f"><div class="f-name">Speed of sound</div><div class="f-eq">v = √(γP/ρ) = √(γRT/M)</div><div class="f-note">≈ 332 m/s in air at 0°C; 343 at 20°C</div></div>
+<div class="f"><div class="f-name">Speed in string</div><div class="f-eq">v = √(T/μ)</div><div class="f-note">T=tension; μ=linear mass density</div></div>
+<div class="f"><div class="f-name">Standing — string (both fixed)</div><div class="f-eq">f_n = nv/2L</div><div class="f-note">All harmonics; n=1 is fundamental</div></div>
+<div class="f"><div class="f-name">Open pipe</div><div class="f-eq">f_n = nv/2L</div></div>
+<div class="f"><div class="f-name">Closed pipe (one end)</div><div class="f-eq">f_n = (2n−1)v/4L</div><div class="f-note">Odd harmonics only</div></div>
+<div class="f"><div class="f-name">Beats</div><div class="f-eq">f_beats = |f₁ − f₂|</div></div>
+<div class="f"><div class="f-name">Doppler effect</div><div class="f-eq">f' = f·(v ± v_o)/(v ∓ v_s)</div><div class="f-note">+ when approaching; − receding</div></div>
+<div class="f"><div class="f-name">Intensity</div><div class="f-eq">β = 10·log(I/I₀) dB</div><div class="f-note">I₀ = 10⁻¹² W/m²; I ∝ A²; I ∝ 1/r²</div></div>
+<div class="f"><div class="f-name">Power in wave</div><div class="f-eq">P = ½μω²A²v</div></div>
+</div>
+</div></div>
+
+<!-- ── P14: FLUIDS & ELASTICITY ── -->
+<div class="chapter" data-s="phy" id="p14">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">P14</span><span class="chap-name phy">Fluids & Elasticity</span><span class="tag tag-m">MED</span><span class="chap-cnt">10 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Pressure at depth</div><div class="f-eq">P = P₀ + ρgh</div></div>
+<div class="f"><div class="f-name">Buoyancy</div><div class="f-eq">F_b = ρ_liq·V·g</div></div>
+<div class="f"><div class="f-name">Bernoulli's equation</div><div class="f-eq">P + ½ρv² + ρgh = const</div></div>
+<div class="f"><div class="f-name">Continuity</div><div class="f-eq">A₁v₁ = A₂v₂</div></div>
+<div class="f"><div class="f-name">Torricelli</div><div class="f-eq">v = √(2gh)</div></div>
+<div class="f"><div class="f-name">Stokes' law</div><div class="f-eq">F = 6πηrv; v_terminal = 2r²(ρ−σ)g/9η</div></div>
+<div class="f"><div class="f-name">Young's modulus</div><div class="f-eq">Y = (F/A)/(ΔL/L)</div><div class="f-unit">N/m² = Pa</div></div>
+<div class="f"><div class="f-name">Bulk modulus</div><div class="f-eq">B = −VΔP/ΔV</div></div>
+<div class="f"><div class="f-name">Surface tension</div><div class="f-eq">T = F/L</div></div>
+<div class="f"><div class="f-name">Excess pressure</div><div class="f-eq">ΔP = 4T/r (soap bubble); 2T/r (droplet)</div></div>
+</div>
+</div></div>
+
+<!-- ── P15: HEAT TRANSFER ── -->
+<div class="chapter" data-s="phy" id="p15">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">P15</span><span class="chap-name phy">Heat Transfer & Thermal Expansion</span><span class="tag tag-m">MED</span><span class="chap-cnt">10 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Linear expansion</div><div class="f-eq">ΔL = L₀αΔT</div></div>
+<div class="f"><div class="f-name">Area expansion</div><div class="f-eq">ΔA = A₀(2α)ΔT = A₀βΔT</div></div>
+<div class="f"><div class="f-name">Volume expansion</div><div class="f-eq">ΔV = V₀(3α)ΔT = V₀γΔT</div></div>
+<div class="f"><div class="f-name">Specific heat</div><div class="f-eq">Q = mcΔT</div><div class="f-note">c_water = 4200 J/kg·K</div></div>
+<div class="f"><div class="f-name">Latent heat</div><div class="f-eq">Q = mL</div><div class="f-note">L_fusion(water) = 336 kJ/kg; L_vap = 2260 kJ/kg</div></div>
+<div class="f"><div class="f-name">Conduction</div><div class="f-eq">H = kA(T₁−T₂)/l</div><div class="f-unit">W = J/s</div></div>
+<div class="f"><div class="f-name">Newton's cooling</div><div class="f-eq">dT/dt = −k(T − T_s)</div></div>
+<div class="f"><div class="f-name">Stefan's law</div><div class="f-eq">P = σεAT⁴</div><div class="f-note">σ = 5.67×10⁻⁸ W/m²K⁴</div></div>
+<div class="f"><div class="f-name">Wien's displacement</div><div class="f-eq">λ_max·T = 2.89×10⁻³ m·K</div></div>
+<div class="f"><div class="f-name">Net radiation</div><div class="f-eq">P_net = σεA(T⁴ − T_s⁴)</div></div>
+</div>
+</div></div>
+
+</div><!-- /panel-phy -->
+
+<!-- ══════════════════════ CHEMISTRY PANEL ══════════════════════ -->
+<div class="subject-panel" id="panel-che" data-subject="che">
+<div class="subject-hero che">
+  <div class="hero-icon">⚗</div>
+  <div><div class="hero-title che">Chemistry</div><div class="hero-sub">Physical · Organic · Inorganic — Complete JEE Coverage</div></div>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-num" style="color:var(--che)">18</div><div class="hstat-lbl">Chapters</div></div>
+    <div class="hstat"><div class="hstat-num" style="color:var(--formula)">200+</div><div class="hstat-lbl">Reactions</div></div>
+    <div class="hstat"><div class="hstat-num" style="color:var(--unit)">25 Qs</div><div class="hstat-lbl">In Exam</div></div>
+  </div>
+</div>
+
+<!-- ── C01: MOLE CONCEPT ── -->
+<div class="chapter" data-s="che" id="c01">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">C01</span><span class="chap-name che">Mole Concept & Stoichiometry</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">12 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Mole definition</div><div class="f-eq">1 mol = 6.022×10²³ particles (N_A)</div></div>
+<div class="f"><div class="f-name">Moles from mass</div><div class="f-eq">n = W(g) / M (molar mass)</div></div>
+<div class="f"><div class="f-name">Moles from volume (STP)</div><div class="f-eq">n = V(L) / 22.4</div><div class="f-note">STP: 0°C, 1 atm; new STP: 0°C, 1 bar → 22.7 L</div></div>
+<div class="f"><div class="f-name">Normality</div><div class="f-eq">N = n × n-factor / V(L)</div></div>
+<div class="f"><div class="f-name">Molarity</div><div class="f-eq">M = moles / V(L) = 10 × d × w% / M_w</div></div>
+<div class="f"><div class="f-name">Molality</div><div class="f-eq">m = moles(solute) / kg(solvent)</div></div>
+<div class="f"><div class="f-name">Mole fraction</div><div class="f-eq">χ_A = n_A / (n_A + n_B)</div></div>
+<div class="f"><div class="f-name">Empirical formula</div><div class="f-eq">Divide % by at.wt → divide by smallest → whole number ratio</div></div>
+<div class="f"><div class="f-name">Limiting reagent</div><div class="f-eq">Divide moles by stoichiometric coeff → smallest = limiting</div></div>
+<div class="f"><div class="f-name">% yield</div><div class="f-eq">% yield = (actual/theoretical) × 100</div></div>
+<div class="f"><div class="f-name">Equivalent concept</div><div class="f-eq">meq = n × n-factor × 1000</div></div>
+<div class="f"><div class="f-name">N₁V₁ = N₂V₂</div><div class="f-eq">Dilution: M₁V₁ = M₂V₂</div></div>
+</div>
+</div></div>
+
+<!-- ── C02: ATOMIC STRUCTURE ── -->
+<div class="chapter" data-s="che" id="c02">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">C02</span><span class="chap-name che">Atomic Structure</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">Key concepts</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="sec">Quantum Numbers & Rules</div>
+<div class="tcard"><table><thead><tr><th>QN</th><th>Symbol</th><th>Values</th><th>Tells</th></tr></thead><tbody>
+<tr><td>Principal</td><td>n</td><td><em>1,2,3…</em></td><td>Shell, energy, size</td></tr>
+<tr><td>Azimuthal</td><td>l</td><td><em>0 to n−1</em></td><td>Subshell, shape (s/p/d/f)</td></tr>
+<tr><td>Magnetic</td><td>m_l</td><td><em>−l to +l</em></td><td>Orbital orientation</td></tr>
+<tr><td>Spin</td><td>m_s</td><td><em>+½ or −½</em></td><td>Electron spin direction</td></tr>
+</tbody></table></div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Max electrons in shell</div><div class="f-eq">2n²</div></div>
+<div class="f"><div class="f-name">Max electrons in subshell</div><div class="f-eq">s:2; p:6; d:10; f:14</div></div>
+<div class="f"><div class="f-name">Number of orbitals in subshell</div><div class="f-eq">s:1; p:3; d:5; f:7</div></div>
+<div class="f"><div class="f-name">Aufbau order</div><div class="f-eq">1s 2s 2p 3s 3p 4s 3d 4p 5s 4d 5p 6s 4f 5d 6p</div></div>
+<div class="f"><div class="f-name">Hund's rule</div><div class="f-eq">Fill one electron in each orbital before pairing</div></div>
+<div class="f"><div class="f-name">Pauli exclusion</div><div class="f-eq">No 2 electrons same set of 4 quantum numbers</div></div>
+</div>
+<div class="sec">Exceptions (JEE favourite!)</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Cr (Z=24)</div><div class="f-eq">[Ar] 3d⁵ 4s¹ (NOT 3d⁴ 4s²)</div><div class="f-note">Half-filled d is stable</div></div>
+<div class="f"><div class="f-name">Cu (Z=29)</div><div class="f-eq">[Ar] 3d¹⁰ 4s¹ (NOT 3d⁹ 4s²)</div><div class="f-note">Fully-filled d is stable</div></div>
+</div>
+</div></div>
+
+<!-- ── C03: CHEMICAL BONDING ── -->
+<div class="chapter" data-s="che" id="c03">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">C03</span><span class="chap-name che">Chemical Bonding & Molecular Structure</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">Key concepts</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="tcard"><table><thead><tr><th>Molecule</th><th>Hybridisation</th><th>Shape</th><th>Bond angle</th></tr></thead><tbody>
+<tr><td>BeCl₂, CO₂, C₂H₂</td><td><em>sp</em></td><td>Linear</td><td><em>180°</em></td></tr>
+<tr><td>BF₃, BCl₃, AlCl₃</td><td><em>sp²</em></td><td>Trigonal planar</td><td><em>120°</em></td></tr>
+<tr><td>CH₄, CCl₄, NH₄⁺</td><td><em>sp³</em></td><td>Tetrahedral</td><td><em>109.5°</em></td></tr>
+<tr><td>NH₃ (1 lp)</td><td><em>sp³</em></td><td>Pyramidal</td><td><em>107°</em></td></tr>
+<tr><td>H₂O (2 lp)</td><td><em>sp³</em></td><td>Bent/V-shape</td><td><em>104.5°</em></td></tr>
+<tr><td>PCl₅</td><td><em>sp³d</em></td><td>Trigonal bipyramidal</td><td><em>90°,120°,180°</em></td></tr>
+<tr><td>SF₆</td><td><em>sp³d²</em></td><td>Octahedral</td><td><em>90°</em></td></tr>
+<tr><td>ClF₃</td><td><em>sp³d</em></td><td>T-shape</td><td><em>90°</em></td></tr>
+<tr><td>XeF₂</td><td><em>sp³d</em></td><td>Linear</td><td><em>180°</em></td></tr>
+<tr><td>XeF₄</td><td><em>sp³d²</em></td><td>Square planar</td><td><em>90°</em></td></tr>
+</tbody></table></div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Bond order — MO theory</div><div class="f-eq">BO = (Bonding e⁻ − Anti-bonding e⁻)/2</div><div class="f-note">O₂ BO=2 (paramagnetic); N₂ BO=3</div></div>
+<div class="f"><div class="f-name">Resonance</div><div class="f-eq">Avg structure; reduces bond length; extra stability</div></div>
+<div class="f"><div class="f-name">VSEPR rule</div><div class="f-eq">Lone pairs repel more than bond pairs</div><div class="f-note">lp−lp &gt; lp−bp &gt; bp−bp repulsion</div></div>
+<div class="f"><div class="f-name">Formal charge</div><div class="f-eq">FC = V − N − B/2</div><div class="f-note">V=valence e⁻; N=nonbonding e⁻; B=bonding e⁻</div></div>
+<div class="f"><div class="f-name">Fajan's rules</div><div class="f-eq">High charge/small cation → more covalent character</div></div>
+<div class="f"><div class="f-name">Hydrogen bonding</div><div class="f-eq">F−H···F, O−H···O, N−H···N (strongest to weakest: F&gt;O&gt;N)</div></div>
+</div>
+</div></div>
+
+<!-- ── C04: THERMODYNAMICS (CHEM) ── -->
+<div class="chapter" data-s="che" id="c04">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">C04</span><span class="chap-name che">Chemical Thermodynamics</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">14 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">First law</div><div class="f-eq">ΔU = q + w; w = −PΔV (work ON system)</div></div>
+<div class="f"><div class="f-name">Enthalpy</div><div class="f-eq">H = U + PV; ΔH = ΔU + ΔngRT</div><div class="f-note">Δn_g = moles gas product − moles gas reactant</div></div>
+<div class="f"><div class="f-name">Hess's law</div><div class="f-eq">ΔH = ΔHf(products) − ΔHf(reactants)</div></div>
+<div class="f"><div class="f-name">Bond enthalpy</div><div class="f-eq">ΔH_rxn = Σ BE(reactants) − Σ BE(products)</div></div>
+<div class="f"><div class="f-name">Entropy</div><div class="f-eq">ΔS = q_rev/T; ΔS(universe) ≥ 0</div></div>
+<div class="f"><div class="f-name">Gibbs free energy</div><div class="f-eq">ΔG = ΔH − TΔS</div><div class="f-note"><span class="hlg">ΔG&lt;0: spontaneous; ΔG=0: equilibrium; ΔG&gt;0: non-spontaneous</span></div></div>
+<div class="f"><div class="f-name">ΔG° and K</div><div class="f-eq">ΔG° = −RT·lnK = −2.303RT·logK</div></div>
+<div class="f"><div class="f-name">ΔG and K_eq</div><div class="f-eq">ΔG = ΔG° + RT·lnQ</div></div>
+<div class="f"><div class="f-name">Spontaneity conditions</div><div class="f-eq">ΔH(−), ΔS(+) → always spontaneous</div><div class="f-note">ΔH(+), ΔS(−) → never spontaneous</div></div>
+</div>
+<div class="tcard"><table><thead><tr><th>Condition</th><th>ΔH</th><th>ΔS</th><th>Spontaneity</th></tr></thead><tbody>
+<tr><td>Always spontaneous</td><td><em class="red">−</em></td><td><em class="red">+</em></td><td><em>All T</em></td></tr>
+<tr><td>High T spontaneous</td><td><em class="red">+</em></td><td><em class="red">+</em></td><td><em>T &gt; ΔH/ΔS</em></td></tr>
+<tr><td>Low T spontaneous</td><td><em class="red">−</em></td><td><em class="red">−</em></td><td><em>T &lt; ΔH/ΔS</em></td></tr>
+<tr><td>Never spontaneous</td><td><em class="red">+</em></td><td><em class="red">−</em></td><td><em>No T</em></td></tr>
+</tbody></table></div>
+</div></div>
+
+<!-- ── C05: EQUILIBRIUM ── -->
+<div class="chapter" data-s="che" id="c05">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">C05</span><span class="chap-name che">Chemical & Ionic Equilibrium</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">16 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="sec">Chemical Equilibrium</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Kc expression (aA+bB⇌cC+dD)</div><div class="f-eq">Kc = [C]c[D]d / [A]a[B]b</div></div>
+<div class="f"><div class="f-name">Kp and Kc</div><div class="f-eq">Kp = Kc(RT)^Δn_g</div></div>
+<div class="f"><div class="f-name">Reaction quotient Q</div><div class="f-eq">Q&lt;K: forward; Q&gt;K: reverse; Q=K: equilibrium</div></div>
+<div class="f"><div class="f-name">Le Chatelier — temperature</div><div class="f-eq">Exothermic: increase T → K decreases; Endothermic → K increases</div></div>
+</div>
+<div class="sec">Ionic Equilibrium</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Arrhenius acid/base</div><div class="f-eq">Acid: H⁺ donor; Base: OH⁻ donor in water</div></div>
+<div class="f"><div class="f-name">Ka and Kb</div><div class="f-eq">Ka = [H⁺][A⁻]/[HA]; Kb = [BH⁺][OH⁻]/[B]</div></div>
+<div class="f"><div class="f-name">pH and pOH</div><div class="f-eq">pH = −log[H⁺]; pOH = −log[OH⁻]; pH + pOH = 14</div></div>
+<div class="f"><div class="f-name">Degree of dissociation (weak acid)</div><div class="f-eq">α = √(Ka/C); [H⁺] = √(Ka·C)</div><div class="f-note">Valid when α &lt;&lt; 1</div></div>
+<div class="f"><div class="f-name">Henderson-Hasselbalch</div><div class="f-eq">pH = pKa + log([A⁻]/[HA])</div><div class="f-note">For buffer solutions</div></div>
+<div class="f"><div class="f-name">Buffer capacity</div><div class="f-eq">Best at pH = pKa; range pKa ± 1</div></div>
+<div class="f"><div class="f-name">Kw</div><div class="f-eq">Kw = [H⁺][OH⁻] = 10⁻¹⁴ at 25°C</div></div>
+<div class="f"><div class="f-name">Solubility product</div><div class="f-eq">Ksp = [M^n+][X^m-]; precipitation if Q > Ksp</div></div>
+<div class="f"><div class="f-name">Hydrolysis of salt</div><div class="f-eq">Weak acid + Strong base → basic (pH&gt;7)</div><div class="f-note">Strong acid + Weak base → acidic (pH&lt;7)</div></div>
+</div>
+</div></div>
+
+<!-- ── C06: ELECTROCHEMISTRY ── -->
+<div class="chapter" data-s="che" id="c06">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">C06</span><span class="chap-name che">Electrochemistry</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">14 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Cell EMF</div><div class="f-eq">E°cell = E°cathode − E°anode</div><div class="f-note"><span class="hlg">Cathode: reduction (higher SRP); Anode: oxidation</span></div></div>
+<div class="f"><div class="f-name">ΔG and E°</div><div class="f-eq">ΔG° = −nFE°</div><div class="f-note">n = electrons transferred; F = 96500 C/mol</div></div>
+<div class="f"><div class="f-name">Nernst equation</div><div class="f-eq">E = E° − (0.0592/n)·logQ at 25°C</div></div>
+<div class="f"><div class="f-name">E° and K</div><div class="f-eq">E° = (0.0592/n)·logK at 25°C</div></div>
+<div class="f"><div class="f-name">Faraday's 1st law</div><div class="f-eq">m = ZIt = (M/nF)·It</div></div>
+<div class="f"><div class="f-name">Faraday's 2nd law</div><div class="f-eq">m₁/m₂ = E₁/E₂ (equiv weights)</div></div>
+<div class="f"><div class="f-name">Conductance</div><div class="f-eq">G = 1/R = κ·A/l</div><div class="f-unit">Siemens (S)</div></div>
+<div class="f"><div class="f-name">Molar conductance</div><div class="f-eq">Λm = κ×1000/M</div><div class="f-unit">S·cm²/mol</div></div>
+<div class="f"><div class="f-name">Kohlrausch law</div><div class="f-eq">Λ°m = ν+λ°+ + ν−λ°−</div></div>
+<div class="f"><div class="f-name">Degree of dissociation</div><div class="f-eq">α = Λm/Λ°m</div></div>
+</div>
+<div class="sec">Standard Reduction Potentials (KEY VALUES)</div>
+<div class="tcard"><table><thead><tr><th>Half-reaction</th><th>E° (V)</th></tr></thead><tbody>
+<tr><td>F₂ + 2e⁻ → 2F⁻</td><td><em>+2.87</em></td></tr>
+<tr><td>MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺</td><td><em>+1.51</em></td></tr>
+<tr><td>Cl₂ + 2e⁻ → 2Cl⁻</td><td><em>+1.36</em></td></tr>
+<tr><td>Cu²⁺ + 2e⁻ → Cu</td><td><em>+0.34</em></td></tr>
+<tr><td>2H⁺ + 2e⁻ → H₂</td><td><em>0.00 (ref)</em></td></tr>
+<tr><td>Fe²⁺ + 2e⁻ → Fe</td><td><em>−0.44</em></td></tr>
+<tr><td>Zn²⁺ + 2e⁻ → Zn</td><td><em>−0.76</em></td></tr>
+<tr><td>Al³⁺ + 3e⁻ → Al</td><td><em>−1.66</em></td></tr>
+<tr><td>Li⁺ + e⁻ → Li</td><td><em>−3.04 (most neg)</em></td></tr>
+</tbody></table></div>
+</div></div>
+
+<!-- ── C07: CHEMICAL KINETICS ── -->
+<div class="chapter" data-s="che" id="c07">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">C07</span><span class="chap-name che">Chemical Kinetics</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">14 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Rate of reaction</div><div class="f-eq">r = −(1/a)d[A]/dt = +(1/c)d[C]/dt</div></div>
+<div class="f"><div class="f-name">Rate law</div><div class="f-eq">r = k[A]^m[B]^n</div><div class="f-note">m,n = order w.r.t. A,B (determined experimentally)</div></div>
+<div class="f"><div class="f-name">Zero order</div><div class="f-eq">[A] = [A₀] − kt; t½ = [A₀]/2k</div></div>
+<div class="f"><div class="f-name">First order</div><div class="f-eq">ln[A] = ln[A₀] − kt; t½ = 0.693/k</div><div class="f-note"><span class="hla">t½ independent of [A₀]</span></div></div>
+<div class="f"><div class="f-name">Second order</div><div class="f-eq">1/[A] = 1/[A₀] + kt; t½ = 1/(k[A₀])</div></div>
+<div class="f"><div class="f-name">Arrhenius equation</div><div class="f-eq">k = Ae^(−Ea/RT)</div><div class="f-note">A=frequency factor; Ea=activation energy</div></div>
+<div class="f"><div class="f-name">Effect of T on k</div><div class="f-eq">log(k₂/k₁) = (Ea/2.303R)·(T₂−T₁)/(T₁T₂)</div></div>
+<div class="f"><div class="f-name">10° rule</div><div class="f-eq">Rate doubles for every 10°C rise (roughly)</div></div>
+<div class="f"><div class="f-name">Half-life after n half-lives</div><div class="f-eq">Amount remaining = N₀ × (½)ⁿ</div></div>
+</div>
+<div class="tcard"><table><thead><tr><th>Order</th><th>Integrated law</th><th>t½</th><th>Units of k</th></tr></thead><tbody>
+<tr><td>Zero</td><td><em>[A] = [A₀] − kt</em></td><td><em>[A₀]/2k</em></td><td><em>mol/L·s</em></td></tr>
+<tr><td>First</td><td><em>ln[A] = ln[A₀] − kt</em></td><td><em>0.693/k</em></td><td><em>s⁻¹</em></td></tr>
+<tr><td>Second</td><td><em>1/[A] = 1/[A₀] + kt</em></td><td><em>1/k[A₀]</em></td><td><em>L/mol·s</em></td></tr>
+</tbody></table></div>
+</div></div>
+
+<!-- ── C08: SOLUTIONS ── -->
+<div class="chapter" data-s="che" id="c08">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">C08</span><span class="chap-name che">Solutions & Colligative Properties</span><span class="tag tag-m">MED</span><span class="chap-cnt">10 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Raoult's law</div><div class="f-eq">P_A = χ_A · P°_A</div><div class="f-note">P_total = P°_A·χ_A + P°_B·χ_B</div></div>
+<div class="f"><div class="f-name">Relative lowering of VP</div><div class="f-eq">(P°−P)/P° = χ_solute</div></div>
+<div class="f"><div class="f-name">Elevation of BP</div><div class="f-eq">ΔT_b = K_b·m</div><div class="f-note">K_b(water) = 0.512 K·kg/mol</div></div>
+<div class="f"><div class="f-name">Depression of FP</div><div class="f-eq">ΔT_f = K_f·m</div><div class="f-note">K_f(water) = 1.86 K·kg/mol</div></div>
+<div class="f"><div class="f-name">Osmotic pressure</div><div class="f-eq">π = MRT = nRT/V</div></div>
+<div class="f"><div class="f-name">Van't Hoff factor</div><div class="f-eq">i = (observed colligative property)/(calculated for non-electrolyte)</div><div class="f-note">Dissociation: i&gt;1; Association: i&lt;1</div></div>
+<div class="f"><div class="f-name">With Van't Hoff factor</div><div class="f-eq">ΔT_b = i·K_b·m; π = iMRT</div></div>
+<div class="f"><div class="f-name">Henry's law</div><div class="f-eq">p = K_H · χ</div><div class="f-note">Gas solubility ∝ partial pressure</div></div>
+</div>
+</div></div>
+
+<!-- ── C09: GOC ── -->
+<div class="chapter" data-s="che" id="c09">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">C09</span><span class="chap-name che">General Organic Chemistry (GOC)</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">Key concepts</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="sec">Electronic Effects</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Inductive effect</div><div class="f-eq">−I groups: −F,−Cl,−Br,−I,−NO₂,−CN,−COOH,−OH</div><div class="f-note">Decreases with distance; −F strongest −I effect</div></div>
+<div class="f"><div class="f-name">+I groups (e⁻ donating)</div><div class="f-eq">−CH₃ &lt; −C₂H₅ &lt; −C₃H₇ (increasing +I)</div></div>
+<div class="f"><div class="f-name">Resonance/Mesomeric</div><div class="f-eq">+M: −OH, −NH₂, −OCH₃, halogens; −M: −NO₂, −CN, −CHO, −COOH</div></div>
+<div class="f"><div class="f-name">Hyperconjugation</div><div class="f-eq">α-H atoms donate e⁻ to adjacent π/vacant orbital</div><div class="f-note">More α-H = more hyperconjugation = more stable carbocation</div></div>
+</div>
+<div class="sec">Stability Order</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Carbocation stability</div><div class="f-eq">3° &gt; 2° &gt; 1° &gt; methyl &gt; vinyl/aryl</div><div class="f-note">Resonance-stabilised (allyl/benzyl) &gt; 3°</div></div>
+<div class="f"><div class="f-name">Carbanion stability</div><div class="f-eq">methyl &gt; 1° &gt; 2° &gt; 3°</div><div class="f-note">Opposite to carbocation; more e⁻-withdrawing = more stable</div></div>
+<div class="f"><div class="f-name">Free radical stability</div><div class="f-eq">3° &gt; 2° &gt; 1° &gt; methyl</div></div>
+<div class="f"><div class="f-name">Acid strength</div><div class="f-eq">Conjugate base stability ↑ → acid strength ↑</div><div class="f-note">−I effect ↑ acid strength; +I effect ↓ acid strength</div></div>
+</div>
+<div class="sec">Isomerism Quick Reference</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Structural isomers</div><div class="f-eq">Chain, position, functional group, metamerism, tautomerism</div></div>
+<div class="f"><div class="f-name">Stereoisomers</div><div class="f-eq">Geometrical (cis-trans), optical (enantiomers, diastereomers)</div></div>
+<div class="f"><div class="f-name">Optical activity condition</div><div class="f-eq">Chiral centre (4 different groups on C); no plane of symmetry</div></div>
+<div class="f"><div class="f-name">R/S configuration</div><div class="f-eq">Priority: I &gt; Br &gt; Cl &gt; F &gt; O &gt; N &gt; C &gt; H</div></div>
+</div>
+</div></div>
+
+<!-- ── C10: ALDEHYDES & KETONES ── -->
+<div class="chapter" data-s="che" id="c10">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">C10</span><span class="chap-name che">Aldehydes, Ketones & Carboxylic Acids</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">Key reactions</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="sec">Nucleophilic Addition to C=O</div>
+<div class="rxn"><div class="rxn-name">Aldol condensation (base catalysed)</div><div class="rxn-eq">2CH₃CHO <span class="arrow">→</span><span class="cond">[OH⁻]</span> CH₃CH(OH)CH₂CHO <span class="arrow">→</span><span class="cond">[Δ]</span> <span class="prod">CH₃CH=CHCHO + H₂O</span></div></div>
+<div class="rxn"><div class="rxn-name">Cannizzaro reaction (no α-H)</div><div class="rxn-eq">2HCHO <span class="arrow">→</span><span class="cond">[conc NaOH]</span> <span class="prod">CH₃OH + HCOONa</span></div><div class="rxn-note">Disproportionation: one oxidised, one reduced</div></div>
+<div class="rxn"><div class="rxn-name">Tollens' test (silver mirror)</div><div class="rxn-eq">RCHO + 2[Ag(NH₃)₂]⁺ + 2OH⁻ <span class="arrow">→</span> <span class="prod">RCOOH + 2Ag↓ + 4NH₃ + H₂O</span></div><div class="rxn-note">Aldehydes only (not ketones)</div></div>
+<div class="rxn"><div class="rxn-name">Fehling's test</div><div class="rxn-eq">RCHO + Cu²⁺ <span class="arrow">→</span><span class="cond">[Fehling soln]</span> <span class="prod">RCOOH + Cu₂O↓ (brick red)</span></div><div class="rxn-note">Aldehydes + aliphatic only</div></div>
+<div class="rxn"><div class="rxn-name">Iodoform test (CH₃CO− or CH₃CHOH)</div><div class="rxn-eq">CH₃CHO + I₂ + NaOH <span class="arrow">→</span> <span class="prod">CHI₃↓ (yellow) + HCOONa</span></div></div>
+<div class="rxn"><div class="rxn-name">Reduction of aldehydes</div><div class="rxn-eq">RCHO <span class="arrow">→</span><span class="cond">[LiAlH₄ or NaBH₄]</span> <span class="prod">RCH₂OH (1° alcohol)</span></div></div>
+<div class="rxn"><div class="rxn-name">Carboxylic acid reactions</div><div class="rxn-eq">RCOOH + SOCl₂ <span class="arrow">→</span> <span class="prod">RCOCl (acid chloride)</span></div></div>
+<div class="rxn"><div class="rxn-name">Fischer esterification</div><div class="rxn-eq">RCOOH + R'OH <span class="arrow">⇌</span><span class="cond">[H⁺, Δ]</span> <span class="prod">RCOOR' + H₂O</span></div></div>
+</div></div>
+
+<!-- ── C11: AMINES ── -->
+<div class="chapter" data-s="che" id="c11">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">C11</span><span class="chap-name che">Amines & Diazonium Salts</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">Key reactions</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Basicity order</div><div class="f-eq">In water: 2° &gt; 1° &gt; 3° &gt; NH₃ &gt; ArNH₂</div><div class="f-note">Aniline very weak base (lone pair delocalised into ring)</div></div>
+<div class="f"><div class="f-name">Gas phase basicity</div><div class="f-eq">3° &gt; 2° &gt; 1° &gt; NH₃</div></div>
+</div>
+<div class="rxn"><div class="rxn-name">Hinsberg test</div><div class="rxn-eq">1° amine + C₆H₅SO₂Cl <span class="arrow">→</span> <span class="prod">sulfonamide (soluble in NaOH)</span></div><div class="rxn-note">2°: insoluble sulfonamide; 3°: no reaction</div></div>
+<div class="rxn"><div class="rxn-name">Diazotisation (ArNH₂)</div><div class="rxn-eq">ArNH₂ + NaNO₂ + HCl <span class="arrow">→</span><span class="cond">[0−5°C]</span> <span class="prod">ArN₂⁺Cl⁻</span></div></div>
+<div class="rxn"><div class="rxn-name">Sandmeyer reaction</div><div class="rxn-eq">ArN₂⁺ + CuX <span class="arrow">→</span> <span class="prod">ArX (X = Cl, Br, CN)</span></div></div>
+<div class="rxn"><div class="rxn-name">Gattermann reaction</div><div class="rxn-eq">ArN₂⁺ + HX <span class="arrow">→</span><span class="cond">[Cu/HX]</span> <span class="prod">ArX</span></div></div>
+<div class="rxn"><div class="rxn-name">Azo coupling</div><div class="rxn-eq">ArN₂⁺ + ArOH/ArNH₂ <span class="arrow">→</span> <span class="prod">Ar−N=N−Ar' (azo dye, orange/yellow)</span></div></div>
+</div></div>
+
+<!-- ── C12: ALCOHOLS ETHERS HALOGENO ── -->
+<div class="chapter" data-s="che" id="c12">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">C12</span><span class="chap-name che">Alcohols, Ethers, Haloalkanes & Haloarenes</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">Key reactions</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="sec">Haloalkanes — SN1 vs SN2</div>
+<div class="tcard"><table><thead><tr><th>Property</th><th>SN1</th><th>SN2</th></tr></thead><tbody>
+<tr><td>Mechanism</td><td><em>2 step (carbocation)</em></td><td><em>1 step (concerted)</em></td></tr>
+<tr><td>Favoured by</td><td><em>3°, 2° substrate</em></td><td><em>1°, methyl substrate</em></td></tr>
+<tr><td>Nucleophile</td><td><em>Weak, polar</em></td><td><em>Strong, charged</em></td></tr>
+<tr><td>Stereochemistry</td><td><em>Racemisation</em></td><td><em>Inversion (Walden)</em></td></tr>
+<tr><td>Solvent</td><td><em>Polar protic</em></td><td><em>Polar aprotic</em></td></tr>
+<tr><td>Rate</td><td><em>k[RX]</em></td><td><em>k[RX][Nu⁻]</em></td></tr>
+</tbody></table></div>
+<div class="rxn"><div class="rxn-name">Lucas test (distinguish 1°, 2°, 3° alcohol)</div><div class="rxn-eq">ROH + ZnCl₂/conc.HCl → RCl (turbidity)</div><div class="rxn-note">3°: immediate; 2°: 5 min; 1°: no reaction at RT</div></div>
+<div class="rxn"><div class="rxn-name">Victor Meyer test</div><div class="rxn-eq">1°: red; 2°: blue; 3°: colourless (with I₂/AgNO₂)</div></div>
+<div class="rxn"><div class="rxn-name">Williamson synthesis</div><div class="rxn-eq">RO⁻Na⁺ + R'X → ROR' + NaX</div></div>
+<div class="rxn"><div class="rxn-name">Elimination (E1/E2) vs SN</div><div class="rxn-eq">3° substrate + strong base + heat → elimination (alkene)</div><div class="rxn-note">Zaitsev rule: more substituted alkene is major product</div></div>
+</div></div>
+
+<!-- ── C13: COORDINATION COMPOUNDS ── -->
+<div class="chapter" data-s="che" id="c13">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">C13</span><span class="chap-name che">Coordination Compounds</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">Key concepts</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Werner's theory</div><div class="f-eq">Primary valency = oxidation state; Secondary = coordination number</div></div>
+<div class="f"><div class="f-name">IUPAC naming</div><div class="f-eq">Anion first, then cation; ligands alphabetical; oxidation state in Roman</div></div>
+<div class="f"><div class="f-name">Effective Atomic Number</div><div class="f-eq">EAN = Z − oxidation state + 2×(CN)</div></div>
+</div>
+<div class="tcard"><table><thead><tr><th>Ligand Type</th><th>Examples</th><th>Denticity</th></tr></thead><tbody>
+<tr><td>Monodentate</td><td><em>Cl⁻, NH₃, H₂O, CO, NO, CN⁻</em></td><td><em>1</em></td></tr>
+<tr><td>Bidentate</td><td><em>en (ethylenediamine), ox (oxalate), acac</em></td><td><em>2</em></td></tr>
+<tr><td>Polydentate</td><td><em>EDTA</em></td><td><em>6</em></td></tr>
+<tr><td>Ambidentate</td><td><em>NO₂⁻ (N or O), SCN⁻ (S or N)</em></td><td><em>1</em></td></tr>
+</tbody></table></div>
+<div class="sec">Crystal Field Theory (CFT)</div>
+<div class="tcard"><table><thead><tr><th>Geometry</th><th>Splitting</th><th>d orbitals up</th><th>d orbitals down</th></tr></thead><tbody>
+<tr><td>Octahedral</td><td><em>Δo (10Dq)</em></td><td><em>eg (dx²-y², dz²)</em></td><td><em>t2g (dxy,dyz,dxz)</em></td></tr>
+<tr><td>Tetrahedral</td><td><em>Δt = 4/9 Δo</em></td><td><em>e (dz²,dx²-y²) lower</em></td><td><em>t2 higher</em></td></tr>
+</tbody></table></div>
+<div class="fgrid">
+<div class="f"><div class="f-name">CFSE</div><div class="f-eq">Octahedral: CFSE = (−0.4t₂g + 0.6eₘ)Δo</div></div>
+<div class="f"><div class="f-name">Spectrochemical series</div><div class="f-eq">I⁻ &lt; Br⁻ &lt; Cl⁻ &lt; F⁻ &lt; OH⁻ &lt; H₂O &lt; NH₃ &lt; en &lt; NO₂⁻ &lt; CN⁻ &lt; CO</div></div>
+<div class="f"><div class="f-name">Magnetic moment</div><div class="f-eq">μ = √(n(n+2)) BM</div><div class="f-note">n = number of unpaired electrons</div></div>
+<div class="f"><div class="f-name">Isomerism in coordination</div><div class="f-eq">Ionisation, linkage, hydrate, geometrical (cis-trans), optical</div></div>
+</div>
+</div></div>
+
+<!-- ── C14: p-BLOCK ── -->
+<div class="chapter" data-s="che" id="c14">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">C14</span><span class="chap-name che">p-Block Elements (Groups 15–18)</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">Key facts</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="sec">Group 15 — Nitrogen Family</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Nitrogen oxides</div><div class="f-eq">N₂O(1), NO(2), N₂O₃(3), NO₂/N₂O₄(4), N₂O₅(5)</div><div class="f-note">Number in brackets = oxidation state</div></div>
+<div class="f"><div class="f-name">HNO₃ reactions</div><div class="f-eq">Dilute HNO₃ + metals → NO; Conc → NO₂</div></div>
+<div class="f"><div class="f-name">PCl₅ vs PCl₃</div><div class="f-eq">PCl₅: sp³d (trig bipyramidal); PCl₃: sp³ (pyramidal)</div></div>
+</div>
+<div class="sec">Group 16 — Oxygen Family</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">SO₂ vs SO₃</div><div class="f-eq">SO₂: reducing agent (acid rain); SO₃: oxidising agent; SO₃ + H₂O → H₂SO₄</div></div>
+<div class="f"><div class="f-name">H₂SO₄ reactions</div><div class="f-eq">Hot conc: oxidises Cu,S; Dilute: reacts with Zn,Fe but not Cu</div></div>
+</div>
+<div class="sec">Group 17 — Halogens</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Oxidising power</div><div class="f-eq">F₂ &gt; Cl₂ &gt; Br₂ &gt; I₂</div><div class="f-note">F₂ no positive oxidation states; always −1</div></div>
+<div class="f"><div class="f-name">Oxyacids of Cl</div><div class="f-eq">HOCl(1) &lt; HClO₂(3) &lt; HClO₃(5) &lt; HClO₄(7) — acid strength increases</div></div>
+<div class="f"><div class="f-name">Interhalogen cpds</div><div class="f-eq">ClF₃ (T-shape), BrF₅ (square pyramidal), IF₇ (pentagonal bipyramidal)</div></div>
+</div>
+<div class="sec">Group 18 — Noble Gases</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">XeF compounds</div><div class="f-eq">XeF₂(linear), XeF₄(sq planar), XeF₆(distorted octahedral)</div></div>
+<div class="f"><div class="f-name">XeO₃ shape</div><div class="f-eq">Pyramidal (3bp + 1lp); sp³</div></div>
+</div>
+</div></div>
+
+<!-- ── C15: d & f BLOCK ── -->
+<div class="chapter" data-s="che" id="c15">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">C15</span><span class="chap-name che">d & f Block Elements</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">Key facts</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Characteristics of transition metals</div><div class="f-eq">Variable oxidation states; coloured compounds; catalytic activity; complex formation; paramagnetism</div></div>
+<div class="f"><div class="f-name">Most stable oxidation states</div><div class="f-eq">Mn: +2,+7; Fe: +2,+3; Co: +2,+3; Cu: +1,+2; Cr: +3,+6</div></div>
+<div class="f"><div class="f-name">KMnO₄ in acid</div><div class="f-eq">MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O (E°=+1.51V)</div></div>
+<div class="f"><div class="f-name">K₂Cr₂O₇ in acid</div><div class="f-eq">Cr₂O₇²⁻ + 14H⁺ + 6e⁻ → 2Cr³⁺ + 7H₂O (orange→green)</div></div>
+<div class="f"><div class="f-name">Lanthanoid contraction</div><div class="f-eq">Poor shielding by 4f electrons → radius decreases across La series</div><div class="f-note">Causes Zr≈Hf (similar radii)</div></div>
+<div class="f"><div class="f-name">Catalytic activity</div><div class="f-eq">Fe (Haber), V₂O₅ (Contact), Ni (Hydrogenation), Pt/Pd (various)</div></div>
+</div>
+</div></div>
+
+<!-- ── C16: PERIODIC TRENDS ── -->
+<div class="chapter" data-s="che" id="c16">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">C16</span><span class="chap-name che">Periodic Table & Trends</span><span class="tag tag-m">MED</span><span class="chap-cnt">Key trends</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="tcard"><table><thead><tr><th>Property</th><th>Across period (→)</th><th>Down group (↓)</th></tr></thead><tbody>
+<tr><td>Atomic radius</td><td><em class="red">Decreases</em></td><td><em>Increases</em></td></tr>
+<tr><td>Ionisation energy</td><td><em class="red">Increases</em></td><td><em>Decreases</em></td></tr>
+<tr><td>Electron affinity</td><td><em class="red">Increases (general)</em></td><td><em>Decreases (general)</em></td></tr>
+<tr><td>Electronegativity</td><td><em class="red">Increases</em></td><td><em>Decreases</em></td></tr>
+<tr><td>Metallic character</td><td><em class="red">Decreases</em></td><td><em>Increases</em></td></tr>
+<tr><td>Oxidising power</td><td><em class="red">Increases</em></td><td><em>Decreases</em></td></tr>
+</tbody></table></div>
+<div class="fgrid">
+<div class="f"><div class="f-name">IE₁ exceptions</div><div class="f-eq">Be&gt;B and N&gt;O (half-filled and fully-filled stability)</div></div>
+<div class="f"><div class="f-name">Highest EN</div><div class="f-eq">F (3.98); then O(3.44), N(3.04), Cl(3.16)</div></div>
+<div class="f"><div class="f-name">EA exceptions</div><div class="f-eq">O &lt; S; F &lt; Cl (due to small size of F/O → more repulsion)</div></div>
+<div class="f"><div class="f-name">Diagonal relationship</div><div class="f-eq">Li/Mg; Be/Al; B/Si (similar properties due to similar charge density)</div></div>
+</div>
+</div></div>
+
+<!-- ── C17: HYDROCARBONS ── -->
+<div class="chapter" data-s="che" id="c17">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">C17</span><span class="chap-name che">Hydrocarbons — Key Reactions</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">Key reactions</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="rxn"><div class="rxn-name">Markovnikov addition (HX to alkene)</div><div class="rxn-eq">CH₂=CH₂ + HBr → CH₃CHBr (major) — H adds to less substituted C</div></div>
+<div class="rxn"><div class="rxn-name">Anti-Markovnikov (peroxide effect)</div><div class="rxn-eq">CH₂=CH₂ + HBr <span class="arrow">→</span><span class="cond">[peroxide, hν]</span> BrCH₂CH₃ (free radical)</div></div>
+<div class="rxn"><div class="rxn-name">Ozonolysis</div><div class="rxn-eq">R₁CH=CHR₂ + O₃ <span class="arrow">→</span> R₁CHO + R₂CHO (reductive: Zn/H₂O) or acids (oxidative)</div></div>
+<div class="rxn"><div class="rxn-name">Alkyne + H₂O (Markovnikov)</div><div class="rxn-eq">RC≡CH + H₂O <span class="arrow">→</span><span class="cond">[H₂SO₄, HgSO₄]</span> <span class="prod">RCOCH₃ (methyl ketone)</span></div></div>
+<div class="rxn"><div class="rxn-name">Benzene — EAS reactions</div><div class="rxn-eq">C₆H₆ + Cl₂ <span class="arrow">→</span><span class="cond">[AlCl₃]</span> C₆H₅Cl; + HNO₃/H₂SO₄ → C₆H₅NO₂; + H₂SO₄(fuming) → C₆H₅SO₃H</div></div>
+<div class="rxn"><div class="rxn-name">Friedel-Crafts</div><div class="rxn-eq">C₆H₆ + RCl <span class="arrow">→</span><span class="cond">[AlCl₃]</span> C₆H₅R (alkylation); + RCOCl → C₆H₅COR (acylation)</div></div>
+<div class="tcard"><table><thead><tr><th>Group on ring</th><th>Type</th><th>Directs to</th><th>Effect on rate</th></tr></thead><tbody>
+<tr><td>−OH, −NH₂, −OCH₃, −CH₃</td><td><em>Activating</em></td><td><em>ortho/para</em></td><td><em class="red">Increases</em></td></tr>
+<tr><td>Halogens (F,Cl,Br,I)</td><td><em>Deactivating</em></td><td><em>ortho/para</em></td><td><em>Decreases</em></td></tr>
+<tr><td>−NO₂, −CN, −COOH, −SO₃H</td><td><em>Deactivating</em></td><td><em>meta</em></td><td><em>Decreases</em></td></tr>
+</tbody></table></div>
+</div></div>
+
+<!-- ── C18: BIOMOLECULES & POLYMERS ── -->
+<div class="chapter" data-s="che" id="c18">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">C18</span><span class="chap-name che">Biomolecules, Polymers & Everyday Chemistry</span><span class="tag tag-m">MED</span><span class="chap-cnt">Key facts</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="tcard"><table><thead><tr><th>Biomolecule</th><th>Monomer</th><th>Linkage</th><th>Key example</th></tr></thead><tbody>
+<tr><td>Polysaccharides</td><td><em>Monosaccharides</em></td><td><em>Glycosidic</em></td><td><em>Starch, Cellulose, Glycogen</em></td></tr>
+<tr><td>Proteins</td><td><em>Amino acids</em></td><td><em>Peptide (−CONH−)</em></td><td><em>Haemoglobin, Insulin</em></td></tr>
+<tr><td>Nucleic acids</td><td><em>Nucleotides</em></td><td><em>Phosphodiester</em></td><td><em>DNA, RNA</em></td></tr>
+<tr><td>Fats/Oils</td><td><em>Fatty acids + glycerol</em></td><td><em>Ester</em></td><td><em>Tripalmitin</em></td></tr>
+</tbody></table></div>
+<div class="tcard"><table><thead><tr><th>Polymer</th><th>Type</th><th>Monomer(s)</th></tr></thead><tbody>
+<tr><td>Nylon-6,6</td><td><em>Condensation, Polyamide</em></td><td><em>Hexamethylene diamine + adipic acid</em></td></tr>
+<tr><td>Nylon-6</td><td><em>Addition/Ring opening</em></td><td><em>Caprolactam</em></td></tr>
+<tr><td>Terylene/Dacron</td><td><em>Condensation, Polyester</em></td><td><em>Ethylene glycol + terephthalic acid</em></td></tr>
+<tr><td>Bakelite</td><td><em>Condensation, Thermosetting</em></td><td><em>Phenol + formaldehyde</em></td></tr>
+<tr><td>Natural rubber</td><td><em>Addition</em></td><td><em>Isoprene (2-methyl-1,3-butadiene)</em></td></tr>
+<tr><td>Buna-S</td><td><em>Copolymer</em></td><td><em>Butadiene + styrene</em></td></tr>
+</tbody></table></div>
+</div></div>
+
+</div><!-- /panel-che -->
+
+<!-- ══════════════════════ MATHS PANEL ══════════════════════ -->
+<div class="subject-panel" id="panel-mat" data-subject="mat">
+<div class="subject-hero mat">
+  <div class="hero-icon">∑</div>
+  <div><div class="hero-title mat">Mathematics</div><div class="hero-sub">Algebra · Calculus · Coordinate Geometry · Vectors · 3D · Probability</div></div>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-num" style="color:var(--mat)">20</div><div class="hstat-lbl">Chapters</div></div>
+    <div class="hstat"><div class="hstat-num" style="color:var(--formula)">300+</div><div class="hstat-lbl">Formulas</div></div>
+    <div class="hstat"><div class="hstat-num" style="color:var(--unit)">25 Qs</div><div class="hstat-lbl">In Exam</div></div>
+  </div>
+</div>
+
+<!-- ── M01: COMPLEX NUMBERS ── -->
+<div class="chapter" data-s="mat" id="m01">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">M01</span><span class="chap-name mat">Complex Numbers</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">16 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Definition</div><div class="f-eq">z = a + ib; i = √(−1); i² = −1; i³ = −i; i⁴ = 1</div></div>
+<div class="f"><div class="f-name">Modulus</div><div class="f-eq">|z| = √(a²+b²); |z₁z₂| = |z₁||z₂|</div></div>
+<div class="f"><div class="f-name">Argument</div><div class="f-eq">arg(z) = θ = tan⁻¹(b/a)</div><div class="f-note">Principal argument: θ ∈ (−π, π]</div></div>
+<div class="f"><div class="f-name">Polar form</div><div class="f-eq">z = r(cosθ + isinθ) = re^(iθ)</div></div>
+<div class="f"><div class="f-name">Euler's formula</div><div class="f-eq">e^(iθ) = cosθ + isinθ; e^(iπ) + 1 = 0</div></div>
+<div class="f"><div class="f-name">Conjugate</div><div class="f-eq">z̄ = a − ib; zz̄ = |z|²; z + z̄ = 2Re(z)</div></div>
+<div class="f"><div class="f-name">De Moivre's theorem</div><div class="f-eq">(cosθ + isinθ)ⁿ = cos(nθ) + isin(nθ)</div></div>
+<div class="f"><div class="f-name">nth roots of unity</div><div class="f-eq">z = e^(2πik/n), k=0,1,...,n−1</div><div class="f-note">Cube roots: 1, ω, ω²; where 1+ω+ω²=0; ω³=1</div></div>
+<div class="f"><div class="f-name">|z₁ ± z₂| inequality</div><div class="f-eq">||z₁| − |z₂|| ≤ |z₁+z₂| ≤ |z₁| + |z₂|</div></div>
+<div class="f"><div class="f-name">Rotation formula</div><div class="f-eq">Rotate z by θ: z·e^(iθ)</div></div>
+<div class="f"><div class="f-name">Locus: |z − z₁| = |z − z₂|</div><div class="f-eq">Perpendicular bisector of z₁z₂</div></div>
+<div class="f"><div class="f-name">Locus: |z − z₁|/|z − z₂| = k</div><div class="f-eq">k≠1: circle (Apollonius); k=1: perp bisector</div></div>
+</div>
+</div></div>
+
+<!-- ── M02: QUADRATICS ── -->
+<div class="chapter" data-s="mat" id="m02">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">M02</span><span class="chap-name mat">Quadratic Equations</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">14 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Quadratic formula</div><div class="f-eq">x = [−b ± √(b²−4ac)] / 2a</div></div>
+<div class="f"><div class="f-name">Discriminant D</div><div class="f-eq">D = b²−4ac; D&gt;0: real distinct; D=0: equal; D&lt;0: complex</div></div>
+<div class="f"><div class="f-name">Vieta's formulas (α,β roots)</div><div class="f-eq">α+β = −b/a; α·β = c/a</div></div>
+<div class="f"><div class="f-name">Sum of roots² </div><div class="f-eq">α²+β² = (α+β)² − 2αβ</div></div>
+<div class="f"><div class="f-name">Difference of roots</div><div class="f-eq">|α−β| = √(D)/|a|</div></div>
+<div class="f"><div class="f-name">Form equation from roots</div><div class="f-eq">x² − (α+β)x + αβ = 0</div></div>
+<div class="f"><div class="f-name">Common root condition</div><div class="f-eq">c(a₁−a₂) = a(c₁−c₂) if b₁/b₂ = a₁/a₂</div></div>
+<div class="f"><div class="f-name">Max/Min of ax²+bx+c</div><div class="f-eq">Min (a&gt;0) = (4ac−b²)/4a at x = −b/2a</div></div>
+<div class="f"><div class="f-name">Both roots positive</div><div class="f-eq">D≥0; α+β&gt;0; αβ&gt;0</div></div>
+<div class="f"><div class="f-name">Both roots negative</div><div class="f-eq">D≥0; α+β&lt;0; αβ&gt;0</div></div>
+<div class="f"><div class="f-name">Roots of opposite sign</div><div class="f-eq">αβ &lt; 0 (c/a &lt; 0)</div></div>
+<div class="f"><div class="f-name">Cubic sum of roots</div><div class="f-eq">α+β+γ = −b/a; αβ+βγ+γα = c/a; αβγ = −d/a</div></div>
+</div>
+</div></div>
+
+<!-- ── M03: SEQUENCES ── -->
+<div class="chapter" data-s="mat" id="m03">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">M03</span><span class="chap-name mat">Sequences & Series</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">18 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="sec">Arithmetic Progression (AP)</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">nth term</div><div class="f-eq">a_n = a + (n−1)d</div></div>
+<div class="f"><div class="f-name">Sum of n terms</div><div class="f-eq">S_n = n/2[2a + (n−1)d] = n/2(a + l)</div></div>
+<div class="f"><div class="f-name">AM</div><div class="f-eq">AM of a,b = (a+b)/2; n AMs between a,b: d = (b−a)/(n+1)</div></div>
+<div class="f"><div class="f-name">Sum of natural numbers</div><div class="f-eq">Σn = n(n+1)/2; Σn² = n(n+1)(2n+1)/6; Σn³ = [n(n+1)/2]²</div></div>
+</div>
+<div class="sec">Geometric Progression (GP)</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">nth term</div><div class="f-eq">a_n = ar^(n−1)</div></div>
+<div class="f"><div class="f-name">Sum of n terms</div><div class="f-eq">S_n = a(rⁿ−1)/(r−1) for r≠1; S_n = na for r=1</div></div>
+<div class="f"><div class="f-name">Sum of infinite GP</div><div class="f-eq">S∞ = a/(1−r) for |r| &lt; 1</div></div>
+<div class="f"><div class="f-name">GM</div><div class="f-eq">GM of a,b = √(ab); n GMs between a,b: r = (b/a)^(1/(n+1))</div></div>
+</div>
+<div class="sec">Harmonic Progression (HP)</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">HP definition</div><div class="f-eq">Reciprocals form AP; nth term = 1/(a+(n−1)d)</div></div>
+<div class="f"><div class="f-name">HM</div><div class="f-eq">HM of a,b = 2ab/(a+b)</div></div>
+<div class="f"><div class="f-name">AM-GM-HM inequality</div><div class="f-eq">AM ≥ GM ≥ HM (equality when a=b)</div></div>
+<div class="f"><div class="f-name">AGP sum</div><div class="f-eq">Multiply by r, subtract from original to find S</div></div>
+</div>
+<div class="sec">Special Series</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Telescoping</div><div class="f-eq">Σ1/(n(n+1)) = 1 − 1/(n+1)</div></div>
+<div class="f"><div class="f-name">Partial fractions method</div><div class="f-eq">1/(n(n+k)) = (1/k)[1/n − 1/(n+k)]</div></div>
+</div>
+</div></div>
+
+<!-- ── M04: PERMUTATIONS ── -->
+<div class="chapter" data-s="mat" id="m04">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">M04</span><span class="chap-name mat">Permutations, Combinations & Binomial</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">16 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Permutation</div><div class="f-eq">ⁿPr = n!/(n−r)!</div></div>
+<div class="f"><div class="f-name">Combination</div><div class="f-eq">ⁿCr = n! / [r!(n−r)!]</div></div>
+<div class="f"><div class="f-name">ⁿCr properties</div><div class="f-eq">ⁿCr = ⁿCₙ₋r; ⁿCr + ⁿCr₋₁ = ⁿ⁺¹Cr</div></div>
+<div class="f"><div class="f-name">Circular permutation</div><div class="f-eq">(n−1)! ways for n distinct; (n−1)!/2 if clockwise=anticlockwise</div></div>
+<div class="f"><div class="f-name">Identical objects</div><div class="f-eq">n items: p identical, q identical → n!/(p!q!…)</div></div>
+<div class="f"><div class="f-name">Dividing n into groups</div><div class="f-eq">n items into groups of r,s,t: n!/(r!s!t!) if groups distinguishable</div></div>
+<div class="f"><div class="f-name">Binomial theorem</div><div class="f-eq">(a+b)ⁿ = Σ ⁿCr · a^(n−r) · bʳ (r=0 to n)</div></div>
+<div class="f"><div class="f-name">General term</div><div class="f-eq">T_{r+1} = ⁿCr · a^(n−r) · bʳ</div></div>
+<div class="f"><div class="f-name">Middle term</div><div class="f-eq">n even: T_{n/2+1}; n odd: T_{(n+1)/2} and T_{(n+3)/2}</div></div>
+<div class="f"><div class="f-name">Sum of coefficients</div><div class="f-eq">2ⁿ = sum of all ⁿCr</div></div>
+<div class="f"><div class="f-name">Sum of odd/even coefficients</div><div class="f-eq">Each = 2^(n−1)</div></div>
+<div class="f"><div class="f-name">Numerically greatest term</div><div class="f-eq">Find r: (n−r+1)/r · |b/a| = 1; check r = floor value</div></div>
+<div class="f"><div class="f-name">Binomial expansion (1+x)ⁿ for |x|&lt;1</div><div class="f-eq">= 1 + nx + n(n−1)x²/2! + …</div></div>
+</div>
+</div></div>
+
+<!-- ── M05: MATRICES ── -->
+<div class="chapter" data-s="mat" id="m05">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">M05</span><span class="chap-name mat">Matrices & Determinants</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">18 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Determinant (2×2)</div><div class="f-eq">|A| = ad − bc for [[a,b],[c,d]]</div></div>
+<div class="f"><div class="f-name">Determinant (3×3) — cofactor</div><div class="f-eq">det = a₁₁C₁₁ + a₁₂C₁₂ + a₁₃C₁₃</div></div>
+<div class="f"><div class="f-name">Properties of det</div><div class="f-eq">det(AB) = det(A)·det(B); det(Aᵀ) = det(A); det(kA) = kⁿdet(A)</div></div>
+<div class="f"><div class="f-name">Singular matrix</div><div class="f-eq">det(A) = 0 → no inverse; rows/cols linearly dependent</div></div>
+<div class="f"><div class="f-name">Inverse of matrix</div><div class="f-eq">A⁻¹ = adj(A)/det(A)</div></div>
+<div class="f"><div class="f-name">Adjoint</div><div class="f-eq">adj(A) = transpose of cofactor matrix</div></div>
+<div class="f"><div class="f-name">A·adj(A)</div><div class="f-eq">A·adj(A) = |A|·I</div></div>
+<div class="f"><div class="f-name">Cramer's rule</div><div class="f-eq">x = D_x/D; y = D_y/D; z = D_z/D</div></div>
+<div class="f"><div class="f-name">System consistency</div><div class="f-eq">D≠0: unique; D=0, D_x=D_y=D_z=0: inf; D=0, any D_i≠0: none</div></div>
+<div class="f"><div class="f-name">Symmetric matrix</div><div class="f-eq">A = Aᵀ; Skew-symmetric: A = −Aᵀ; diagonal elements = 0</div></div>
+<div class="f"><div class="f-name">Orthogonal matrix</div><div class="f-eq">AAᵀ = I → A⁻¹ = Aᵀ; det = ±1</div></div>
+<div class="f"><div class="f-name">Idempotent</div><div class="f-eq">A² = A; Involutory: A² = I; Nilpotent: Aⁿ = 0</div></div>
+<div class="f"><div class="f-name">Trace</div><div class="f-eq">tr(A) = Σa_ii = sum of eigenvalues</div></div>
+<div class="f"><div class="f-name">Cayley-Hamilton</div><div class="f-eq">Every matrix satisfies its own characteristic equation</div></div>
+</div>
+</div></div>
+
+<!-- ── M06: CALCULUS — LIMITS ── -->
+<div class="chapter" data-s="mat" id="m06">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">M06</span><span class="chap-name mat">Limits, Continuity & Differentiability</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">20 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="sec">Standard Limits</div>
+<div class="fgrid dense">
+<div class="f"><div class="f-name">Algebraic</div><div class="f-eq">lim(xⁿ−aⁿ)/(x−a) = naⁿ⁻¹</div></div>
+<div class="f"><div class="f-name">Trigonometric</div><div class="f-eq">lim_{x→0} sinx/x = 1; tanx/x = 1; sin⁻¹x/x = 1</div></div>
+<div class="f"><div class="f-name">Exponential</div><div class="f-eq">lim_{x→0} (eˣ−1)/x = 1; (aˣ−1)/x = ln(a)</div></div>
+<div class="f"><div class="f-name">Logarithmic</div><div class="f-eq">lim_{x→0} ln(1+x)/x = 1; (1+x)^(1/x) = e</div></div>
+<div class="f"><div class="f-name">1^∞ form</div><div class="f-eq">lim[f(x)]^g(x); if f→1,g→∞: e^{lim g(x)(f(x)−1)}</div></div>
+<div class="f"><div class="f-name">L'Hôpital</div><div class="f-eq">0/0 or ∞/∞ forms: lim f/g = lim f'/g'</div></div>
+</div>
+<div class="sec">Differentiation Rules</div>
+<div class="fgrid dense">
+<div class="f"><div class="f-name">Product rule</div><div class="f-eq">d(uv)/dx = u'v + uv'</div></div>
+<div class="f"><div class="f-name">Quotient rule</div><div class="f-eq">d(u/v)/dx = (u'v − uv')/v²</div></div>
+<div class="f"><div class="f-name">Chain rule</div><div class="f-eq">dy/dx = (dy/du)·(du/dx)</div></div>
+<div class="f"><div class="f-name">Parametric</div><div class="f-eq">dy/dx = (dy/dt)/(dx/dt)</div></div>
+<div class="f"><div class="f-name">Implicit</div><div class="f-eq">Differentiate both sides; collect dy/dx terms</div></div>
+<div class="f"><div class="f-name">nth derivative of xⁿ</div><div class="f-eq">dⁿ/dxⁿ(xⁿ) = n!</div></div>
+</div>
+<div class="sec">Standard Derivatives</div>
+<div class="tcard"><table><thead><tr><th>f(x)</th><th>f'(x)</th><th>f(x)</th><th>f'(x)</th></tr></thead><tbody>
+<tr><td>xⁿ</td><td><em>nxⁿ⁻¹</em></td><td>sin x</td><td><em>cos x</em></td></tr>
+<tr><td>eˣ</td><td><em>eˣ</em></td><td>cos x</td><td><em>−sin x</em></td></tr>
+<tr><td>aˣ</td><td><em>aˣ·ln a</em></td><td>tan x</td><td><em>sec²x</em></td></tr>
+<tr><td>ln x</td><td><em>1/x</em></td><td>cot x</td><td><em>−cosec²x</em></td></tr>
+<tr><td>log_a x</td><td><em>1/(x·ln a)</em></td><td>sec x</td><td><em>sec x·tan x</em></td></tr>
+<tr><td>sin⁻¹x</td><td><em>1/√(1−x²)</em></td><td>cosec x</td><td><em>−cosec x·cot x</em></td></tr>
+<tr><td>cos⁻¹x</td><td><em>−1/√(1−x²)</em></td><td>tan⁻¹x</td><td><em>1/(1+x²)</em></td></tr>
+<tr><td>√x</td><td><em>1/2√x</em></td><td>|x|</td><td><em>x/|x| (x≠0)</em></td></tr>
+</tbody></table></div>
+</div></div>
+
+<!-- ── M07: APPLICATIONS OF DERIVATIVES ── -->
+<div class="chapter" data-s="mat" id="m07">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">M07</span><span class="chap-name mat">Applications of Derivatives</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">14 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Tangent slope</div><div class="f-eq">m = dy/dx|_{(x₀,y₀)}</div></div>
+<div class="f"><div class="f-name">Tangent equation</div><div class="f-eq">y − y₀ = m(x − x₀)</div></div>
+<div class="f"><div class="f-name">Normal equation</div><div class="f-eq">y − y₀ = −(1/m)(x − x₀)</div></div>
+<div class="f"><div class="f-name">Angle between curves</div><div class="f-eq">tanθ = |(m₁−m₂)/(1+m₁m₂)|</div></div>
+<div class="f"><div class="f-name">Critical points</div><div class="f-eq">f'(x) = 0 or undefined</div></div>
+<div class="f"><div class="f-name">1st derivative test</div><div class="f-eq">f' changes + to −: max; − to +: min</div></div>
+<div class="f"><div class="f-name">2nd derivative test</div><div class="f-eq">f''(c)&lt;0: max; f''(c)&gt;0: min; f''(c)=0: inconclusive</div></div>
+<div class="f"><div class="f-name">Rolle's theorem</div><div class="f-eq">f(a)=f(b), f cont, f diff → ∃c∈(a,b): f'(c)=0</div></div>
+<div class="f"><div class="f-name">LMVT</div><div class="f-eq">∃c: f'(c) = [f(b)−f(a)]/(b−a)</div></div>
+<div class="f"><div class="f-name">Increasing/decreasing</div><div class="f-eq">f'(x)&gt;0: increasing; f'(x)&lt;0: decreasing</div></div>
+<div class="f"><div class="f-name">Concavity</div><div class="f-eq">f''(x)&gt;0: concave up; f''(x)&lt;0: concave down</div></div>
+<div class="f"><div class="f-name">Inflection point</div><div class="f-eq">f''(x) changes sign</div></div>
+<div class="f"><div class="f-name">Approximation</div><div class="f-eq">f(x+h) ≈ f(x) + h·f'(x)</div></div>
+</div>
+</div></div>
+
+<!-- ── M08: INTEGRATION ── -->
+<div class="chapter" data-s="mat" id="m08">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">M08</span><span class="chap-name mat">Integral Calculus</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">30 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="sec">Standard Integrals</div>
+<div class="tcard"><table><thead><tr><th>∫f(x)dx</th><th>Result + C</th><th>∫f(x)dx</th><th>Result + C</th></tr></thead><tbody>
+<tr><td>xⁿ (n≠−1)</td><td><em>xⁿ⁺¹/(n+1)</em></td><td>1/x</td><td><em>ln|x|</em></td></tr>
+<tr><td>eˣ</td><td><em>eˣ</em></td><td>aˣ</td><td><em>aˣ/ln a</em></td></tr>
+<tr><td>sin x</td><td><em>−cos x</em></td><td>cos x</td><td><em>sin x</em></td></tr>
+<tr><td>tan x</td><td><em>ln|sec x|</em></td><td>cot x</td><td><em>ln|sin x|</em></td></tr>
+<tr><td>sec x</td><td><em>ln|sec x+tan x|</em></td><td>cosec x</td><td><em>ln|cosec x−cot x|</em></td></tr>
+<tr><td>sec²x</td><td><em>tan x</em></td><td>cosec²x</td><td><em>−cot x</em></td></tr>
+<tr><td>sec x·tan x</td><td><em>sec x</em></td><td>cosec x·cot x</td><td><em>−cosec x</em></td></tr>
+<tr><td>1/√(1−x²)</td><td><em>sin⁻¹x</em></td><td>−1/√(1−x²)</td><td><em>cos⁻¹x</em></td></tr>
+<tr><td>1/(1+x²)</td><td><em>tan⁻¹x</em></td><td>1/√(a²−x²)</td><td><em>sin⁻¹(x/a)</em></td></tr>
+<tr><td>1/(a²+x²)</td><td><em>(1/a)tan⁻¹(x/a)</em></td><td>1/(a²−x²)</td><td><em>(1/2a)ln|(a+x)/(a−x)|</em></td></tr>
+<tr><td>√(a²−x²)</td><td><em>(x/2)√(a²−x²)+(a²/2)sin⁻¹(x/a)</em></td><td>√(x²+a²)</td><td><em>(x/2)√(x²+a²)+(a²/2)ln|x+√(x²+a²)|</em></td></tr>
+</tbody></table></div>
+<div class="sec">Integration Techniques</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Integration by parts</div><div class="f-eq">∫udv = uv − ∫vdu</div><div class="f-note">ILATE: Inverse, Log, Algebraic, Trig, Exponential (priority for u)</div></div>
+<div class="f"><div class="f-name">Reduction (sin·cos)</div><div class="f-eq">∫sinⁿx = −(1/n)sinⁿ⁻¹x·cosx + (n−1)/n·∫sinⁿ⁻²x</div></div>
+<div class="f"><div class="f-name">Definite integral properties</div><div class="f-eq">∫_a^b f = −∫_b^a f; ∫_a^a f = 0</div></div>
+<div class="f"><div class="f-name">Additive property</div><div class="f-eq">∫_a^b f = ∫_a^c f + ∫_c^b f</div></div>
+<div class="f"><div class="f-name">King's property</div><div class="f-eq">∫_a^b f(x)dx = ∫_a^b f(a+b−x)dx</div><div class="f-note"><span class="hla">Most useful property — use often!</span></div></div>
+<div class="f"><div class="f-name">0 to 2a property</div><div class="f-eq">∫_0^{2a} f = 2∫_0^a f if f(2a−x)=f(x); 0 if f(2a−x)=−f(x)</div></div>
+<div class="f"><div class="f-name">Even/Odd on [−a,a]</div><div class="f-eq">Even: ∫_{-a}^a = 2∫_0^a; Odd: ∫_{-a}^a = 0</div></div>
+<div class="f"><div class="f-name">Walli's formula</div><div class="f-eq">∫_0^{π/2} sinⁿx = (n−1)!!/n!! × (π/2 if n even)</div></div>
+</div>
+<div class="sec">Area & Differential Equations</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Area under curve</div><div class="f-eq">A = ∫_a^b |f(x)| dx</div></div>
+<div class="f"><div class="f-name">Area between two curves</div><div class="f-eq">A = ∫_a^b [f(x) − g(x)] dx (f≥g)</div></div>
+<div class="f"><div class="f-name">Variable separable DE</div><div class="f-eq">f(y)dy = g(x)dx → ∫f(y)dy = ∫g(x)dx</div></div>
+<div class="f"><div class="f-name">Homogeneous DE</div><div class="f-eq">dy/dx = f(y/x); sub v=y/x; x·dv/dx = f(v)−v</div></div>
+<div class="f"><div class="f-name">Linear DE</div><div class="f-eq">dy/dx + Py = Q; IF = e^∫P·dx; y·IF = ∫Q·IF·dx</div></div>
+</div>
+</div></div>
+
+<!-- ── M09: COORDINATE GEOMETRY ── -->
+<div class="chapter" data-s="mat" id="m09">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">M09</span><span class="chap-name mat">Coordinate Geometry — Lines & Conics</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">40 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="sec">Straight Lines</div>
+<div class="fgrid dense">
+<div class="f"><div class="f-name">Distance formula</div><div class="f-eq">d = √[(x₂−x₁)²+(y₂−y₁)²]</div></div>
+<div class="f"><div class="f-name">Section formula (m:n internal)</div><div class="f-eq">x = (mx₂+nx₁)/(m+n); y = (my₂+ny₁)/(m+n)</div></div>
+<div class="f"><div class="f-name">Midpoint</div><div class="f-eq">((x₁+x₂)/2, (y₁+y₂)/2)</div></div>
+<div class="f"><div class="f-name">Slope of line</div><div class="f-eq">m = (y₂−y₁)/(x₂−x₁) = tanθ</div></div>
+<div class="f"><div class="f-name">Slope-intercept form</div><div class="f-eq">y = mx + c</div></div>
+<div class="f"><div class="f-name">Two-point form</div><div class="f-eq">(y−y₁)/(y₂−y₁) = (x−x₁)/(x₂−x₁)</div></div>
+<div class="f"><div class="f-name">Intercept form</div><div class="f-eq">x/a + y/b = 1</div></div>
+<div class="f"><div class="f-name">Normal form</div><div class="f-eq">xcosω + ysinω = p</div></div>
+<div class="f"><div class="f-name">Point-slope form</div><div class="f-eq">y − y₁ = m(x − x₁)</div></div>
+<div class="f"><div class="f-name">Distance point to line</div><div class="f-eq">d = |ax₁+by₁+c| / √(a²+b²)</div></div>
+<div class="f"><div class="f-name">Angle between lines</div><div class="f-eq">tanθ = |(m₁−m₂)/(1+m₁m₂)|</div></div>
+<div class="f"><div class="f-name">Parallel: m₁=m₂; Perpendicular: m₁m₂=−1</div><div class="f-eq">Concurrent: D=0 for system of 3 lines</div></div>
+</div>
+<div class="sec">Circle</div>
+<div class="fgrid dense">
+<div class="f"><div class="f-name">Standard form</div><div class="f-eq">x² + y² = r²</div></div>
+<div class="f"><div class="f-name">General form</div><div class="f-eq">x²+y²+2gx+2fy+c = 0; centre(−g,−f); r=√(g²+f²−c)</div></div>
+<div class="f"><div class="f-name">Tangent at (x₁,y₁)</div><div class="f-eq">xx₁+yy₁ = r²</div></div>
+<div class="f"><div class="f-name">Tangent with slope m</div><div class="f-eq">y = mx ± r√(1+m²)</div></div>
+<div class="f"><div class="f-name">Length of tangent</div><div class="f-eq">L = √(x₁²+y₁²+2gx₁+2fy₁+c)</div></div>
+<div class="f"><div class="f-name">Condition for tangency</div><div class="f-eq">d (centre to line) = r</div></div>
+</div>
+<div class="sec">Parabola y²=4ax</div>
+<div class="fgrid dense">
+<div class="f"><div class="f-name">Focus, directrix</div><div class="f-eq">F(a,0); dir: x=−a; vertex: (0,0); axis: x-axis</div></div>
+<div class="f"><div class="f-name">Parametric point</div><div class="f-eq">(at², 2at)</div></div>
+<div class="f"><div class="f-name">Tangent at (at²,2at)</div><div class="f-eq">ty = x + at²</div></div>
+<div class="f"><div class="f-name">Tangent with slope m</div><div class="f-eq">y = mx + a/m</div></div>
+<div class="f"><div class="f-name">Normal at (at²,2at)</div><div class="f-eq">y = −tx + 2at + at³</div></div>
+<div class="f"><div class="f-name">Chord of contact</div><div class="f-eq">T = 0: yy₁ = 2a(x+x₁)</div></div>
+</div>
+<div class="sec">Ellipse x²/a²+y²/b²=1 (a&gt;b)</div>
+<div class="fgrid dense">
+<div class="f"><div class="f-name">Key properties</div><div class="f-eq">e = c/a; c²=a²−b²; Foci(±c,0)</div></div>
+<div class="f"><div class="f-name">Parametric</div><div class="f-eq">(acosθ, bsinθ)</div></div>
+<div class="f"><div class="f-name">Tangent at (x₁,y₁)</div><div class="f-eq">xx₁/a² + yy₁/b² = 1</div></div>
+<div class="f"><div class="f-name">Condition for tangency (y=mx+c)</div><div class="f-eq">c² = a²m²+b²</div></div>
+<div class="f"><div class="f-name">Focal radii sum</div><div class="f-eq">SP + S'P = 2a</div></div>
+</div>
+<div class="sec">Hyperbola x²/a²−y²/b²=1</div>
+<div class="fgrid dense">
+<div class="f"><div class="f-name">Key properties</div><div class="f-eq">e=c/a&gt;1; c²=a²+b²; Asymptotes: y=±(b/a)x</div></div>
+<div class="f"><div class="f-name">Rectangular hyperbola</div><div class="f-eq">xy = c²; e = √2; parametric: (ct, c/t)</div></div>
+<div class="f"><div class="f-name">Focal radii difference</div><div class="f-eq">|SP − S'P| = 2a</div></div>
+</div>
+</div></div>
+
+<!-- ── M10: 3D GEOMETRY ── -->
+<div class="chapter" data-s="mat" id="m10">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">M10</span><span class="chap-name mat">3D Geometry & Vectors</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">30 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="sec">3D Geometry</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Distance in 3D</div><div class="f-eq">d = √[(x₂−x₁)²+(y₂−y₁)²+(z₂−z₁)²]</div></div>
+<div class="f"><div class="f-name">Direction cosines</div><div class="f-eq">l²+m²+n² = 1; l=cosα, m=cosβ, n=cosγ</div></div>
+<div class="f"><div class="f-name">Direction ratios</div><div class="f-eq">a:b:c (proportional to l:m:n); l=a/√(a²+b²+c²)</div></div>
+<div class="f"><div class="f-name">Line through two points</div><div class="f-eq">(x−x₁)/(x₂−x₁) = (y−y₁)/(y₂−y₁) = (z−z₁)/(z₂−z₁)</div></div>
+<div class="f"><div class="f-name">Angle between lines</div><div class="f-eq">cosθ = |l₁l₂+m₁m₂+n₁n₂|</div></div>
+<div class="f"><div class="f-name">Equation of plane</div><div class="f-eq">ax+by+cz+d = 0; normal: (a,b,c)</div></div>
+<div class="f"><div class="f-name">Plane through 3 points</div><div class="f-eq">|x−x₁  y−y₁  z−z₁; x₂−x₁ …| = 0</div></div>
+<div class="f"><div class="f-name">Distance point to plane</div><div class="f-eq">d = |ax₁+by₁+cz₁+d| / √(a²+b²+c²)</div></div>
+<div class="f"><div class="f-name">Angle between planes</div><div class="f-eq">cosθ = |a₁a₂+b₁b₂+c₁c₂| / (|n₁||n₂|)</div></div>
+<div class="f"><div class="f-name">Skew lines — shortest distance</div><div class="f-eq">d = |(b₁−a₁)·(d₁×d₂)| / |d₁×d₂|</div></div>
+</div>
+<div class="sec">Vectors</div>
+<div class="fgrid">
+<div class="f"><div class="f-name">Dot product</div><div class="f-eq">a⃗·b⃗ = |a||b|cosθ = a₁b₁+a₂b₂+a₃b₃</div></div>
+<div class="f"><div class="f-name">Cross product magnitude</div><div class="f-eq">|a⃗×b⃗| = |a||b|sinθ</div></div>
+<div class="f"><div class="f-name">Cross product — area</div><div class="f-eq">Area △ = ½|a⃗×b⃗|; parallelogram = |a⃗×b⃗|</div></div>
+<div class="f"><div class="f-name">Scalar triple product</div><div class="f-eq">[a b c] = a·(b×c) = volume of parallelepiped</div></div>
+<div class="f"><div class="f-name">Coplanarity condition</div><div class="f-eq">[a b c] = 0</div></div>
+<div class="f"><div class="f-name">Projection of a on b</div><div class="f-eq">= (a·b)/|b|</div></div>
+<div class="f"><div class="f-name">Vector triple product</div><div class="f-eq">a×(b×c) = (a·c)b − (a·b)c</div></div>
+<div class="f"><div class="f-name">Position vector (section)</div><div class="f-eq">r⃗ = (m·b⃗+n·a⃗)/(m+n)</div></div>
+</div>
+</div></div>
+
+<!-- ── M11: PROBABILITY ── -->
+<div class="chapter" data-s="mat" id="m11">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">M11</span><span class="chap-name mat">Probability & Statistics</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">20 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Classical probability</div><div class="f-eq">P(A) = n(A)/n(S)</div></div>
+<div class="f"><div class="f-name">Complement</div><div class="f-eq">P(A') = 1 − P(A)</div></div>
+<div class="f"><div class="f-name">Addition rule</div><div class="f-eq">P(A∪B) = P(A)+P(B)−P(A∩B)</div></div>
+<div class="f"><div class="f-name">Mutually exclusive</div><div class="f-eq">P(A∩B)=0; P(A∪B)=P(A)+P(B)</div></div>
+<div class="f"><div class="f-name">Conditional probability</div><div class="f-eq">P(A|B) = P(A∩B)/P(B)</div></div>
+<div class="f"><div class="f-name">Independence</div><div class="f-eq">P(A∩B) = P(A)·P(B)</div></div>
+<div class="f"><div class="f-name">Multiplication theorem</div><div class="f-eq">P(A∩B) = P(A)·P(B|A)</div></div>
+<div class="f"><div class="f-name">Bayes' theorem</div><div class="f-eq">P(Aᵢ|B) = P(Aᵢ)P(B|Aᵢ) / ΣP(Aⱼ)P(B|Aⱼ)</div></div>
+<div class="f"><div class="f-name">Total probability</div><div class="f-eq">P(B) = ΣP(Aᵢ)·P(B|Aᵢ)</div></div>
+<div class="f"><div class="f-name">Binomial distribution</div><div class="f-eq">P(X=r) = ⁿCr·pʳ·qⁿ⁻ʳ</div><div class="f-note">Mean = np; Variance = npq; SD = √(npq)</div></div>
+<div class="f"><div class="f-name">Mean</div><div class="f-eq">x̄ = Σfx/Σf</div></div>
+<div class="f"><div class="f-name">Variance</div><div class="f-eq">σ² = Σf(x−x̄)²/Σf = Σfx²/Σf − x̄²</div></div>
+<div class="f"><div class="f-name">Std deviation</div><div class="f-eq">σ = √(variance)</div></div>
+<div class="f"><div class="f-name">Coefficient of variation</div><div class="f-eq">CV = (σ/x̄) × 100%</div></div>
+</div>
+</div></div>
+
+<!-- ── M12: TRIGONOMETRY ── -->
+<div class="chapter" data-s="mat" id="m12">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">M12</span><span class="chap-name mat">Trigonometry — Identities & Equations</span><span class="tag tag-h">HIGH</span><span class="chap-cnt">35 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="sec">Fundamental Identities</div>
+<div class="fgrid dense">
+<div class="f"><div class="f-name">Pythagorean</div><div class="f-eq">sin²x+cos²x=1; sec²x=1+tan²x; cosec²x=1+cot²x</div></div>
+<div class="f"><div class="f-name">sin/cos in terms of tan(x/2)</div><div class="f-eq">sinx=2t/(1+t²); cosx=(1−t²)/(1+t²); t=tan(x/2)</div></div>
+</div>
+<div class="sec">Compound Angle Formulas</div>
+<div class="fgrid dense">
+<div class="f"><div class="f-name">sin(A±B)</div><div class="f-eq">sinAcosB ± cosAsinB</div></div>
+<div class="f"><div class="f-name">cos(A±B)</div><div class="f-eq">cosAcosB ∓ sinAsinB</div></div>
+<div class="f"><div class="f-name">tan(A±B)</div><div class="f-eq">(tanA ± tanB)/(1 ∓ tanAtanB)</div></div>
+</div>
+<div class="sec">Double/Triple Angle</div>
+<div class="fgrid dense">
+<div class="f"><div class="f-name">sin 2A</div><div class="f-eq">2sinAcosA = 2tanA/(1+tan²A)</div></div>
+<div class="f"><div class="f-name">cos 2A</div><div class="f-eq">cos²A−sin²A = 2cos²A−1 = 1−2sin²A = (1−tan²A)/(1+tan²A)</div></div>
+<div class="f"><div class="f-name">tan 2A</div><div class="f-eq">2tanA/(1−tan²A)</div></div>
+<div class="f"><div class="f-name">sin 3A</div><div class="f-eq">3sinA − 4sin³A</div></div>
+<div class="f"><div class="f-name">cos 3A</div><div class="f-eq">4cos³A − 3cosA</div></div>
+<div class="f"><div class="f-name">tan 3A</div><div class="f-eq">(3tanA − tan³A)/(1 − 3tan²A)</div></div>
+</div>
+<div class="sec">Sum-to-Product & Product-to-Sum</div>
+<div class="fgrid dense">
+<div class="f"><div class="f-name">sinC + sinD</div><div class="f-eq">2sin[(C+D)/2]cos[(C−D)/2]</div></div>
+<div class="f"><div class="f-name">sinC − sinD</div><div class="f-eq">2cos[(C+D)/2]sin[(C−D)/2]</div></div>
+<div class="f"><div class="f-name">cosC + cosD</div><div class="f-eq">2cos[(C+D)/2]cos[(C−D)/2]</div></div>
+<div class="f"><div class="f-name">cosC − cosD</div><div class="f-eq">−2sin[(C+D)/2]sin[(C−D)/2]</div></div>
+<div class="f"><div class="f-name">2sinAcosB</div><div class="f-eq">sin(A+B) + sin(A−B)</div></div>
+<div class="f"><div class="f-name">2cosAcosB</div><div class="f-eq">cos(A−B) + cos(A+B)</div></div>
+<div class="f"><div class="f-name">2sinAsinB</div><div class="f-eq">cos(A−B) − cos(A+B)</div></div>
+</div>
+<div class="sec">Inverse Trig & Solutions</div>
+<div class="fgrid dense">
+<div class="f"><div class="f-name">sin⁻¹x + cos⁻¹x</div><div class="f-eq">= π/2</div></div>
+<div class="f"><div class="f-name">tan⁻¹x + cot⁻¹x</div><div class="f-eq">= π/2</div></div>
+<div class="f"><div class="f-name">tan⁻¹x + tan⁻¹y</div><div class="f-eq">= tan⁻¹[(x+y)/(1−xy)] if xy&lt;1</div></div>
+<div class="f"><div class="f-name">sin⁻¹x + sin⁻¹y</div><div class="f-eq">= sin⁻¹[x√(1−y²)+y√(1−x²)]</div></div>
+<div class="f"><div class="f-name">General solution: sinθ=sinα</div><div class="f-eq">θ = nπ + (−1)ⁿα</div></div>
+<div class="f"><div class="f-name">General solution: cosθ=cosα</div><div class="f-eq">θ = 2nπ ± α</div></div>
+<div class="f"><div class="f-name">General solution: tanθ=tanα</div><div class="f-eq">θ = nπ + α</div></div>
+</div>
+<div class="sec">Properties of Triangles</div>
+<div class="fgrid dense">
+<div class="f"><div class="f-name">Sine rule</div><div class="f-eq">a/sinA = b/sinB = c/sinC = 2R</div></div>
+<div class="f"><div class="f-name">Cosine rule</div><div class="f-eq">a² = b²+c²−2bc·cosA</div></div>
+<div class="f"><div class="f-name">Area of triangle</div><div class="f-eq">Δ = ½ab·sinC = √[s(s−a)(s−b)(s−c)]</div></div>
+<div class="f"><div class="f-name">Inradius</div><div class="f-eq">r = Δ/s; s = (a+b+c)/2</div></div>
+<div class="f"><div class="f-name">Circumradius</div><div class="f-eq">R = abc/4Δ</div></div>
+</div>
+</div></div>
+
+<!-- ── M13: SETS & FUNCTIONS ── -->
+<div class="chapter" data-s="mat" id="m13">
+<div class="chap-head" onclick="tog(this)"><span class="chap-num">M13</span><span class="chap-name mat">Sets, Relations & Functions</span><span class="tag tag-m">MED</span><span class="chap-cnt">12 formulas</span><span class="chev">▾</span></div>
+<div class="chap-body">
+<div class="fgrid">
+<div class="f"><div class="f-name">Set operations</div><div class="f-eq">n(A∪B) = n(A)+n(B)−n(A∩B)</div></div>
+<div class="f"><div class="f-name">Three sets</div><div class="f-eq">n(A∪B∪C) = n(A)+n(B)+n(C)−n(A∩B)−n(B∩C)−n(A∩C)+n(A∩B∩C)</div></div>
+<div class="f"><div class="f-name">Power set</div><div class="f-eq">|P(A)| = 2^n (n elements)</div></div>
+<div class="f"><div class="f-name">Subsets</div><div class="f-eq">2ⁿ subsets total; 2ⁿ−1 proper subsets</div></div>
+<div class="f"><div class="f-name">Domain of √(f(x))</div><div class="f-eq">f(x) ≥ 0</div></div>
+<div class="f"><div class="f-name">Domain of log(f(x))</div><div class="f-eq">f(x) &gt; 0</div></div>
+<div class="f"><div class="f-name">Even function</div><div class="f-eq">f(−x) = f(x); symmetric about y-axis</div></div>
+<div class="f"><div class="f-name">Odd function</div><div class="f-eq">f(−x) = −f(x); symmetric about origin</div></div>
+<div class="f"><div class="f-name">Periodic function</div><div class="f-eq">f(x+T) = f(x); T = period</div></div>
+<div class="f"><div class="f-name">Period of |sinx|, |cosx|</div><div class="f-eq">π (not 2π!)</div></div>
+<div class="f"><div class="f-name">Composition</div><div class="f-eq">(fog)(x) = f(g(x)); domain: range(g) ⊆ domain(f)</div></div>
+<div class="f"><div class="f-name">Bijective = invertible</div><div class="f-eq">One-one (injective) + onto (surjective)</div></div>
+</div>
+</div></div>
+
+</div><!-- /panel-mat -->
+
+<!-- ══ NO RESULTS ══ -->
+<div id="no-res">No formulas found. Try a different search term.</div>
+
+</div><!-- /wrap -->
+
+<button class="print-btn" onclick="window.print()">⎙ Print / Save PDF</button>
+
+<script>
+var allChapters = document.querySelectorAll('.chapter');
+var allF = document.querySelectorAll('.f, .rxn, .tcard, .mnem');
+
+function tog(h){h.closest('.chapter').classList.toggle('closed');}
+
+function search(q){
+  q = q.trim().toLowerCase();
+  var vis = false;
+  document.querySelectorAll('.chapter').forEach(ch=>{
+    var txt = ch.textContent.toLowerCase();
+    var match = !q || txt.includes(q);
+    ch.style.display = match ? '' : 'none';
+    if(match && q) ch.classList.remove('closed');
+    if(match) vis = true;
+  });
+  document.getElementById('no-res').style.display = (!vis && q) ? 'block' : 'none';
+  updateCount();
+}
+
+function show(s, btn){
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.subject-panel').forEach(p=>{
+    if(s === 'all') p.classList.add('active');
+    else p.classList.toggle('active', p.id === 'panel-'+s);
+  });
+  document.querySelectorAll('.chapter').forEach(ch=>ch.style.display='');
+  document.getElementById('q').value='';
+  document.getElementById('no-res').style.display='none';
+  updateCount();
+}
+
+function updateCount(){
+  var vis = document.querySelectorAll('.chapter:not([style*="none"])').length;
+  document.getElementById('cnt').textContent = vis + ' chapters visible';
+}
+
+updateCount();
+</script>
+</body>
+</html>
